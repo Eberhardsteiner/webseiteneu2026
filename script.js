@@ -1,11 +1,7 @@
 // Navigation scroll effect
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-        nav.classList.add('nav--scrolled');
-    } else {
-        nav.classList.remove('nav--scrolled');
-    }
+    nav.classList.toggle('nav--scrolled', window.scrollY > 60);
 });
 
 // Mobile menu toggle
@@ -14,23 +10,15 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 navToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('mobile-menu--active');
-    navToggle.classList.toggle('nav__toggle--active');
 });
 
-// Close mobile menu on link click
 mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         mobileMenu.classList.remove('mobile-menu--active');
-        navToggle.classList.remove('nav__toggle--active');
     });
 });
 
 // Scroll animations (Intersection Observer)
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -38,11 +26,15 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-// Apply fade-in to sections
-document.querySelectorAll('.value-card, .expert-card, .challenge-card, .why-us__layout, .cta__layout').forEach(el => {
+document.querySelectorAll(
+    '.disruption-card, .fourC__card, .process-step, .expert-card, .cta__layout, .values-bar__item'
+).forEach((el, i) => {
     el.classList.add('fade-in');
+    // Stagger animations within same section
+    const delay = i % 4;
+    if (delay > 0) el.classList.add(`fade-in-delay-${delay}`);
     observer.observe(el);
 });
 
@@ -52,9 +44,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = nav.offsetHeight;
-            const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            const offset = nav.offsetHeight;
+            window.scrollTo({
+                top: target.getBoundingClientRect().top + window.scrollY - offset,
+                behavior: 'smooth'
+            });
         }
     });
 });
