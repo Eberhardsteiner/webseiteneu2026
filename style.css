@@ -234,6 +234,17 @@ ul, ol { list-style: none; }
     font-size: 0.9rem;
 }
 
+.btn--secondary {
+    background: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.btn--secondary:hover {
+    background: var(--color-accent-subtle);
+    transform: translateY(-1px);
+}
+
 
 /* --- Hero --- */
 .hero {
