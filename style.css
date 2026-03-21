@@ -563,6 +563,10 @@ ul, ol { list-style: none; }
     margin-bottom: var(--space-md);
 }
 
+.fourC__cta #quickscan-button-root {
+    margin: 1.5rem 0;
+}
+
 
 /* --- Process Steps --- */
 .process__grid {
