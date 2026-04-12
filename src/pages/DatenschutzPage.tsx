@@ -101,21 +101,31 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="pt-6 border-t border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Hosting</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Hosting und IONOS WebAnalytics</h2>
+
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">Hosting</h3>
             <p className="text-base text-gray-700 leading-relaxed mb-3">
-              Diese Website wird bei einem Hosting-Anbieter betrieben.
+              Diese Website wird gehostet bei: <strong>IONOS SE</strong>, Elgendorfer Str. 57, 56410 Montabaur, Deutschland.
             </p>
-            <p className="text-base text-gray-700 leading-relaxed mb-3 font-medium text-amber-700">
-              TODO / manuell prüfen: Bitte Hosting-Anbieter (z. B. IONOS) und ggf. Auftragsverarbeitungsvertrag hier eintragen.
+            <p className="text-base text-gray-700 leading-relaxed mb-4">
+              Beim Betrieb der Website verarbeitet IONOS technisch unvermeidbar Verbindungsdaten (IP-Adresse, Zeitpunkt des Abrufs, aufgerufene Ressource, Browser-Typ, Referrer). Diese Verarbeitung ist für die technische Bereitstellung der Website erforderlich. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Mit IONOS besteht ein Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO.
+            </p>
+
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">IONOS WebAnalytics</h3>
+            <p className="text-base text-gray-700 leading-relaxed mb-3">
+              Auf dieser Website ist IONOS WebAnalytics aktiviert. Dabei handelt es sich um ein Webanalyse-Werkzeug, das IONOS als Teil des Hosting-Pakets bereitstellt und das auf der Technologie von Snowplow Analytics basiert.
             </p>
             <p className="text-base text-gray-700 leading-relaxed mb-3">
-              Beim Betrieb einer Website verarbeitet der Hosting-Anbieter technisch unvermeidbar Verbindungsdaten (IP-Adresse, Zeitpunkt, aufgerufene Ressource, Browser-Typ). Diese Daten werden für die technische Bereitstellung benötigt und in Server-Protokolldateien gespeichert.
+              IONOS WebAnalytics erfasst laut Angaben von IONOS ausschließlich aggregierte, nicht personenbezogene Nutzungsdaten, zum Beispiel: Anzahl der Seitenaufrufe, aufgerufene Seiten, ungefähre geografische Herkunft (auf Länderebene) sowie verwendete Browser und Endgeräte. IP-Adressen werden dabei nach Angaben von IONOS anonymisiert bzw. nicht in auswertbarer Form gespeichert. Die erhobenen Daten werden von IONOS ausschließlich zur Verbesserung des eigenen Hosting-Angebots genutzt und nicht mit anderen Datenquellen zusammengeführt.
             </p>
-            <p className="text-base text-gray-700 leading-relaxed mb-3 font-medium text-amber-700">
-              TODO / manuell prüfen: Falls IONOS WebAnalytics im Hosting-Backend aktiviert ist, muss dies hier separat beschrieben werden. IONOS WebAnalytics basiert auf Snowplow-Technologie und erfasst laut IONOS keine personenbezogenen Daten. Diesen Abschnitt nur dann final formulieren und aktivieren, wenn IONOS WebAnalytics tatsächlich eingeschaltet ist. Solange unklar, bitte deaktiviert lassen oder beim Anbieter nachfragen.
+            <p className="text-base text-gray-700 leading-relaxed mb-3">
+              Da nach dieser Beschreibung keine personenbezogenen Daten verarbeitet werden, ist nach derzeitiger Einschätzung keine gesonderte Einwilligung erforderlich. Rechtsgrundlage für den Hosting-Betrieb: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Betrieb und der Optimierung der Website).
             </p>
             <p className="text-base text-gray-700 leading-relaxed">
-              <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am technischen Betrieb der Website).
+              Weitere Informationen zu IONOS WebAnalytics und zum Datenschutz bei IONOS finden Sie unter:{' '}
+              <a href="https://www.ionos.de/terms-gtc/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 underline">
+                ionos.de/terms-gtc/datenschutzerklaerung
+              </a>.
             </p>
           </section>
 
