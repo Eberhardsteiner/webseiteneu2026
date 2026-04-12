@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NewHomePage from './pages/NewHomePage';
 import ErrorBoundary from './components/ErrorBoundary';
 import { BASE_PATH, ROUTES } from './constants/paths';
+import { ConsentProvider } from './contexts/ConsentContext';
 
 // Lazy load routes for code splitting
 const UnternehmenPage = lazy(() => import('./pages/UnternehmenPage'));
@@ -23,6 +24,7 @@ function PageLoader() {
 function App() {
   return (
     <ErrorBoundary>
+      <ConsentProvider>
       <BrowserRouter basename={BASE_PATH}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
@@ -35,6 +37,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </ConsentProvider>
     </ErrorBoundary>
   );
 }

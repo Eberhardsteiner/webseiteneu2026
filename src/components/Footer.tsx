@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import { Linkedin, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ROUTES, SECTIONS } from '../constants/paths';
+import ConsentSettingsModal from './ConsentSettingsModal';
 
 export default function Footer() {
+  const [showConsent, setShowConsent] = useState(false);
+
   return (
     <footer className="bg-[#101420] text-white py-16">
+      {showConsent && <ConsentSettingsModal onClose={() => setShowConsent(false)} />}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
@@ -83,9 +88,15 @@ export default function Footer() {
           <p className="text-gray-500 text-sm">
             2026 UVM Consulting Group. Alle Rechte vorbehalten.
           </p>
-          <div className="flex gap-6 text-sm text-gray-500">
+          <div className="flex gap-6 text-sm text-gray-500 flex-wrap">
             <Link to={ROUTES.IMPRESSUM} className="text-sm hover:text-primary-400 transition-colors">Impressum</Link>
             <Link to={ROUTES.DATENSCHUTZ} className="text-sm hover:text-primary-400 transition-colors">Datenschutz</Link>
+            <button
+              onClick={() => setShowConsent(true)}
+              className="text-sm hover:text-primary-400 transition-colors text-gray-500"
+            >
+              Datenschutzeinstellungen
+            </button>
           </div>
         </div>
       </div>
