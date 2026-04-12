@@ -3,16 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NewHomePage from './pages/NewHomePage';
 import ErrorBoundary from './components/ErrorBoundary';
 import { BASE_PATH, ROUTES } from './constants/paths';
-import { ConsentProvider } from './contexts/ConsentContext';
 
-// Lazy load routes for code splitting
 const UnternehmenPage = lazy(() => import('./pages/UnternehmenPage'));
 const FuehrungskraeftequalifizierungPage = lazy(() => import('./pages/FuehrungskraeftequalifizierungPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
-// Loading fallback component
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -24,7 +21,6 @@ function PageLoader() {
 function App() {
   return (
     <ErrorBoundary>
-      <ConsentProvider>
       <BrowserRouter basename={BASE_PATH}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
@@ -37,7 +33,6 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-      </ConsentProvider>
     </ErrorBoundary>
   );
 }

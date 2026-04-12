@@ -1,6 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
-import { useConsent } from "../contexts/ConsentContext";
-import GoogleFontsConsentBanner from "./GoogleFontsConsentBanner";
+import { useState, useMemo } from "react";
 
 const DIMS = [
   {
@@ -164,15 +162,6 @@ export default function QuickScan4C() {
   const [curDim, setCurDim] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [started, setStarted] = useState(false);
-  const [showConsentBanner, setShowConsentBanner] = useState(false);
-  const { consent, hasDecided } = useConsent();
-
-  useEffect(() => {
-    if (started && !showResults && !hasDecided) {
-      setShowConsentBanner(true);
-    }
-  }, [started, showResults, hasDecided]);
-
   function setAnswer(id, val) {
     setAnswers(prev => {
       const next = { ...prev };
@@ -367,12 +356,6 @@ export default function QuickScan4C() {
   // ==================== QUESTION SCREEN ====================
   return (
     <div style={{ ...baseBg, position: "relative", overflow: "hidden" }}>
-      {showConsentBanner && (
-        <GoogleFontsConsentBanner onClose={() => setShowConsentBanner(false)} />
-      )}
-      {consent.googleFonts === true && (
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      )}
       <style>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
         * { box-sizing: border-box; }

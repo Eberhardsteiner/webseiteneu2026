@@ -48,21 +48,9 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="pt-6 border-t border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Externe Schriftarten (Google Fonts)</h2>
-            <p className="text-base text-gray-700 leading-relaxed mb-3">
-              Der 4C-Navigator Quickscan auf dieser Website kann die Schriftart <strong>DM Sans</strong> von Google Fonts (Anbieter: Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) laden.
-            </p>
-            <p className="text-base text-gray-700 leading-relaxed mb-3">
-              Die Schriftart wird ausschließlich dann von Servern von Google (fonts.googleapis.com, fonts.gstatic.com) geladen, wenn Sie zuvor aktiv eingewilligt haben. Bei der Verbindung zu Google-Servern wird technisch mindestens Ihre IP-Adresse übertragen. Google hat seinen Sitz in den USA.
-            </p>
-            <p className="text-base text-gray-700 leading-relaxed mb-3">
-              Ohne Ihre Einwilligung wird keine Verbindung zu Google-Servern aufgebaut. Das Tool verwendet dann System-Schriftarten; Funktionalität und Auswertung sind davon nicht betroffen.
-            </p>
-            <p className="text-base text-gray-700 leading-relaxed mb-3">
-              <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).
-            </p>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Schriftarten</h2>
             <p className="text-base text-gray-700 leading-relaxed">
-              Ihre Einwilligung können Sie jederzeit über den Link „Datenschutzeinstellungen" im Footer widerrufen. Der Widerruf hat Wirkung für künftige Seitenaufrufe; bereits stattgefundene Verbindungen können nicht rückgängig gemacht werden. Datenschutzhinweise von Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 underline">policies.google.com/privacy</a>.
+              Diese Website verwendet ausschließlich lokal eingebundene Schriftarten (Mulish), die direkt vom eigenen Server geladen werden. Es werden keine externen Schriftart-Dienste wie Google Fonts genutzt. Dabei findet kein Verbindungsaufbau zu Drittservern statt.
             </p>
           </section>
 
@@ -148,14 +136,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="pt-6 border-t border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Datenschutzeinstellungen</h2>
-            <p className="text-base text-gray-700 leading-relaxed">
-              Einwilligungen, die Sie auf dieser Website erteilt haben, können Sie jederzeit über den Link <strong>„Datenschutzeinstellungen"</strong> im Footer dieser Seite widerrufen oder anpassen. Betroffen ist derzeit: das Laden von Google Fonts im 4C-Navigator Quickscan.
-            </p>
-          </section>
-
-          <section className="pt-6 border-t border-gray-200">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Aktualität und Änderungen</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Aktualität und Änderungen</h2>
             <p className="text-base text-gray-700 leading-relaxed">
               Diese Datenschutzerklärung entspricht dem Stand der technischen Umsetzung dieser Website. Bei wesentlichen Änderungen an der Website oder der Datenverarbeitung wird sie aktualisiert. Stand: April 2026.
             </p>
