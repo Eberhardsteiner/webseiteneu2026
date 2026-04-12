@@ -1,4 +1,4 @@
-export const BASE_PATH = '/web2026';
+export const BASE_PATH = '/';
 
 export const ROUTES = {
   HOME: '/',
