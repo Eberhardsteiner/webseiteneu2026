@@ -222,7 +222,7 @@ export default function UnternehmenMainContent() {
             <AccordionItem
               title="Prof. Dr. Miriam Landes"
               subtitle="Senior Beraterin für Responsible Leadership, Strategie und Change | Coach für Vorstände und Geschäftsführungen | Expertin im Bereich Female und Responsible Leadership"
-              imageSrc={`${BASE_PATH}/img/people/MiriamLandes.jpg`}
+              imageSrc="/img/people/MiriamLandes.jpg"
               imageAlt="Prof. Dr. Miriam Landes"
             >
               <div className="space-y-6 text-base text-gray-700">
@@ -353,7 +353,7 @@ export default function UnternehmenMainContent() {
             <AccordionItem
               title="Prof. Dr. Eberhard Steiner"
               subtitle="Senior Berater für KI-Strategie, Disruption und Führung | Coach für Vorstände und Geschäftsführungen | Experte für Strategie, Digitalisierung und Umgang mit Disruption"
-              imageSrc={`${BASE_PATH}/img/people/EberhardSteiner.jpg`}
+              imageSrc="/img/people/EberhardSteiner.jpg"
               imageAlt="Prof. Dr. Eberhard Steiner"
             >
               <div className="space-y-6 text-base text-gray-700">
