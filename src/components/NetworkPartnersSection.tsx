@@ -65,7 +65,7 @@ const networkPartners: NetworkPartner[] = [
   },
 
 {
-    name: 'Schäuble Consulting GmbG',
+    name: 'Schäuble Consulting GmbH',
     meta: 'Wolfgang Schäuble & Susann Schäuble',
     topics: ['Führung in Krisen', 'Strategisches Krisenmanagement'],
     website: {
