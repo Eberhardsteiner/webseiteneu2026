@@ -63,6 +63,16 @@ const networkPartners: NetworkPartner[] = [
     topics: ['Coaching'],
     
   },
+
+{
+    name: 'Schäuble Consulting GmbG',
+    meta: 'Wolfgang Schäuble & Susann Schäuble',
+    topics: ['Führung in Krisen', 'Strategisches Krisenmanagement'],
+    website: {
+      url: 'https://www.schaeuble-consulting.de/',
+    },
+  },
+  
   {
     name: 'Prof. Dr. Matthias Spörrle',
     topics: ['Psychologie', 'KI'],
