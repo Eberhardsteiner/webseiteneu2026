@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.uvm-consultinggroup.de/sitemap.xml
+Sitemap: https://uvm-cg.de/sitemap.xml
