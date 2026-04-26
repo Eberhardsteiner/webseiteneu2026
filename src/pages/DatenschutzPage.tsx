@@ -25,7 +25,7 @@ export default function DatenschutzPage() {
               <p>Partnerschaft Beratender Betriebswirt – Diplom-Psychologin</p>
               <p className="mt-3"><strong>Büro Olching bei München:</strong> Josef-Bergmann-Weg 1, 82140 Olching</p>
               <p><strong>Postanschrift:</strong> UVM-Institut, Postfach 440327, 80752 München</p>
-              <p className="mt-3"><strong>E-Mail:</strong> info@uvm-cg.de</p>
+              <p className="mt-3"><strong>E-Mail:</strong> info@uvm-consultinggroup.de</p>
               <p><strong>Telefon:</strong> +49 89 15 9000 75</p>
             </div>
           </section>
@@ -131,7 +131,7 @@ export default function DatenschutzPage() {
               <li>Beschwerde bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO)</li>
             </ul>
             <p className="text-base text-gray-700 mt-4">
-              Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:info@uvm-cg.de" className="text-primary-600 hover:text-primary-700 underline">info@uvm-cg.de</a>
+              Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:info@uvm-consultinggroup.de" className="text-primary-600 hover:text-primary-700 underline">info@uvm-consultinggroup.de</a>
             </p>
           </section>
 

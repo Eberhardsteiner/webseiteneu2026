@@ -704,7 +704,7 @@ function NewHomePage() {
               </p>
               <div className="flex items-center gap-lg flex-wrap">
                 <a
-                  href="mailto:info@uvm-cg.de"
+                  href="mailto:info@uvm-consultinggroup.de"
                   className="inline-block px-8 py-3.5 bg-accent text-white text-[0.85rem] font-semibold uppercase tracking-[0.08em] transition-all hover:bg-accent-light"
                 >
                   Jetzt QuickScan anfragen
@@ -761,10 +761,10 @@ function NewHomePage() {
             </div>
             <div className="flex flex-col gap-1.5">
               <a
-                href="mailto:info@uvm-cg.de"
+                href="mailto:info@uvm-consultinggroup.de"
                 className="text-xs text-white/50 transition-colors hover:text-white"
               >
-                info@uvm-cg.de
+                info@uvm-consultinggroup.de
               </a>
               <a
                 href="tel:+498915900075"

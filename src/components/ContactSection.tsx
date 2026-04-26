@@ -36,7 +36,7 @@ export default function ContactSection() {
                 Analyse Ihres Unternehmens über alle vier Dimensionen des 4C-Modells.
               </p>
               <a
-                href="mailto:info@uvm-cg.de"
+                href="mailto:info@uvm-consultinggroup.de"
                 className="inline-flex items-center gap-2 bg-white text-primary-600 px-6 py-3 rounded-lg text-base font-medium hover:bg-white/90 hover:scale-105 hover:shadow-lg transition-all duration-300 group"
               >
                 QuickScan anfragen
@@ -90,9 +90,9 @@ export default function ContactSection() {
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 animate-fade-in-up delay-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Kontaktdaten</h3>
             <div className="space-y-4">
-              <a href="mailto:info@uvm-cg.de" className="flex items-center gap-3 text-gray-600 hover:text-primary-600 transition-all duration-200 group">
+              <a href="mailto:info@uvm-consultinggroup.de" className="flex items-center gap-3 text-gray-600 hover:text-primary-600 transition-all duration-200 group">
                 <Mail size={20} className="group-hover:scale-110 transition-transform" />
-                <span className="text-lg">info@uvm-cg.de</span>
+                <span className="text-lg">info@uvm-consultinggroup.de</span>
               </a>
               <a href="tel:+498915900075" className="flex items-center gap-3 text-gray-600 hover:text-primary-600 transition-all duration-200 group">
                 <Phone size={20} className="group-hover:scale-110 transition-transform" />

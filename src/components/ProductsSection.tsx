@@ -59,7 +59,7 @@ const quadrants = [
           'KI entfaltet nur dann Wirkung, wenn Organisation, Prozesse und Menschen „ready“ sind – nicht nur die Technologie.',
           'Mit diesem Produkt schaffen wir die Voraussetzungen für erfolgreichen KI‑Einsatz: Wir prüfen Reifegrad und Einsatzfelder, klären Daten‑/Prozess‑Grundlagen, definieren Governance (z. B. Rollen, Datenschutz, Sicherheit, Ethik) und bauen die nötigen Kompetenzen sowie Akzeptanz im Alltag auf.',
           'Ergebnis ist ein umsetzbarer Fahrplan von Pilot‑Use‑Cases bis Skalierung – integriert in Strategie, Kultur und klare Leitplanken, damit KI nachhaltig, verantwortungsvoll und messbar wirkt.',
-          <>Weitere Informationen: <a href="https://uvm-cg.de/ki/dist/index.html" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 underline font-medium">uvm-cg.de/ki</a></>,
+          <>Weitere Informationen: <a href="https://www.uvm-consultinggroup.de/ki/dist/index.html" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 underline font-medium">uvm-consultinggroup.de/ki</a></>,
           ],
         icon: TrendingUp,
       },

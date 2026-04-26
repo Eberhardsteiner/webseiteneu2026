@@ -26,7 +26,7 @@ export default function Footer() {
                 <Linkedin size={18} />
               </a>
               <a
-                href="mailto:info@uvm-cg.de"
+                href="mailto:info@uvm-consultinggroup.de"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary-500 transition-colors"
                 aria-label="Email"
               >
