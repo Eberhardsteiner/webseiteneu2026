@@ -162,6 +162,7 @@ export default function QuickScan4C() {
   const [curDim, setCurDim] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [started, setStarted] = useState(false);
+
   function setAnswer(id, val) {
     setAnswers(prev => {
       const next = { ...prev };
@@ -195,13 +196,14 @@ export default function QuickScan4C() {
     minHeight: "100vh",
     background: "linear-gradient(155deg, #0c2a3a 0%, #0a1f2e 30%, #0d1b2a 60%, #091520 100%)",
     color: "#fff",
-    fontFamily: "inherit",
+    fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif",
   };
 
   // ==================== START SCREEN ====================
   if (!started) {
     return (
       <div style={{ ...baseBg, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 32, textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <div style={{ position: "absolute", top: -150, right: -150, width: 500, height: 500, background: "radial-gradient(circle, rgba(42,124,158,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         <div style={{ width: 72, height: 72, borderRadius: 20, background: "linear-gradient(135deg, #2a7c9e, #1a8a7a)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 700, marginBottom: 28, boxShadow: "0 12px 40px rgba(42,124,158,0.3)" }}>
@@ -257,6 +259,7 @@ export default function QuickScan4C() {
 
     return (
       <div style={{ ...baseBg, padding: "32px 24px", position: "relative", overflow: "hidden" }}>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: 36 }}>
@@ -356,6 +359,7 @@ export default function QuickScan4C() {
   // ==================== QUESTION SCREEN ====================
   return (
     <div style={{ ...baseBg, position: "relative", overflow: "hidden" }}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
         * { box-sizing: border-box; }
