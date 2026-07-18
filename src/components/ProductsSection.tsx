@@ -1,6 +1,7 @@
 import { useState, ReactNode, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useScrollProgress } from '../hooks/useScrollProgress';
+import { BASE_PATH } from '../constants/paths';
 import {
   BarChart3,
   Users,
@@ -120,7 +121,7 @@ const quadrants = [
                       '„Sensegiving" sorgt dafür, dass Führung nicht nur Regeln vermittelt, sondern Sinn stiftet – durch klare Narrative, Leitplanken und konsistente Vorbildwirkung (Empowerment, offene Kommunikation, kontinuierliches Feedback), damit Zusammenarbeit spürbar leichter, schneller und verlässlicher wird.',
                       <div className="mt-4 flex items-start gap-4">
                         <a href="https://link.springer.com/book/10.1007/978-3-662-69652-1" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-                          <img src="https://media.springernature.com/w153/springer-static/cover-hires/book/978-3-662-69652-1" alt="Buchcover" className="w-24 h-auto rounded shadow-lg hover:shadow-xl transition-shadow" />
+                          <picture><source srcSet={`${BASE_PATH}/img/books/978-3-662-69652-1.webp`} type="image/webp" /><img src={`${BASE_PATH}/img/books/978-3-662-69652-1.jpg`} alt="Buchcover des Springer-Fachbuchs von Landes und Steiner zu Führungsprinzipien und Sensegiving" width="153" height="230" loading="lazy" className="w-24 h-auto rounded shadow-lg hover:shadow-xl transition-shadow" /></picture>
                         </a>
                         <div className="flex-1">
                           <p className="text-sm">Unser Buch zum Thema: <a href="https://link.springer.com/book/10.1007/978-3-662-69652-1" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 underline font-medium">Springer-Verlag</a></p>

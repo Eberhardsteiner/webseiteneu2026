@@ -197,7 +197,7 @@ export default function HeroSection() {
           </div>
 
           <div className="flex justify-center mb-16 fade-in-up delay-600">
-            <div ref={diagramRef} className="relative w-[400px] h-[400px] md:w-[448px] md:h-[448px] lg:w-[560px] lg:h-[560px]">
+            <div ref={diagramRef} className="relative w-full max-w-[400px] md:max-w-[448px] lg:max-w-[560px] aspect-square">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div
                   className="absolute inset-0 w-full h-full rounded-full bg-white shadow-2xl transition-opacity duration-700"

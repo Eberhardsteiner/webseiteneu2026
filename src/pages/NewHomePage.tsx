@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Zap, Target, Users, Shield, X } from 'lucide-react';
 import { ROUTES } from '../constants/paths';
+import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
 import UnternehmenMainContent from '../components/UnternehmenMainContent';
 import ProductsSection from '../components/ProductsSection';
 import QuickScan4C from '../components/QuickScan4C';
@@ -102,8 +104,43 @@ function NewHomePage() {
     return () => observer.disconnect();
   }, []);
 
+  const organizationJsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'UVM Consulting Group',
+    url: 'https://uvm-cg.de',
+    logo: 'https://uvm-cg.de/og-image.png',
+    email: 'info@uvm-institut.de',
+    telephone: '+49 89 15900075',
+    faxNumber: '+49 89 3612713',
+    vatID: 'DE255167385',
+    address: [
+      {
+        '@type': 'PostalAddress',
+        streetAddress: 'Pater-Alois-Weg 12',
+        postalCode: '85435',
+        addressLocality: 'Erding',
+        addressCountry: 'DE',
+      },
+      {
+        '@type': 'PostalAddress',
+        streetAddress: 'Josef-Bergmann-Weg 1',
+        postalCode: '82140',
+        addressLocality: 'Olching',
+        addressCountry: 'DE',
+      },
+    ],
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        title="UVM Consulting Group – 4C-Modell für Zukunftsfähigkeit"
+        description="Wissenschaftlich fundierte Beratung für zukunftsfähige Organisationen. Das 4C-Modell verbindet Strategie, Kultur, Code of Conduct und Kompetenzen."
+      />
+      <Helmet defer={false}>
+        <script type="application/ld+json">{organizationJsonLd}</script>
+      </Helmet>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#101420] shadow-[0_1px_0_rgba(13,148,136,0.15)] ${
           scrolled ? 'py-3' : 'py-4'
@@ -113,7 +150,9 @@ function NewHomePage() {
           <Link to={ROUTES.HOME} className="flex items-center">
             <img
               src={logoImage}
-              alt="UVM Institut"
+              alt="Logo des UVM-Instituts"
+              width={2101}
+              height={650}
               className="h-10 md:h-12 w-auto object-contain"
             />
           </Link>
@@ -200,9 +239,9 @@ function NewHomePage() {
           </div>
 
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="md:hidden flex flex-col items-center justify-center gap-1.5 p-3 -my-1 min-h-[44px] min-w-[44px]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label="Menü öffnen oder schließen"
           >
             <span className="block w-6 h-0.5 bg-white transition-all"></span>
             <span className="block w-6 h-0.5 bg-white transition-all"></span>
@@ -222,42 +261,42 @@ function NewHomePage() {
                 <a
                   href="#uvm-consulting"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base text-white/70 tracking-[0.08em] font-light"
+                  className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
                 >
                   UVM Consulting Group
                 </a>
                 <a
                   href="#geschaeftsfuehrung"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base text-white/70 tracking-[0.08em] font-light"
+                  className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
                 >
                   Geschäftsführung
                 </a>
                 <a
                   href="#werte"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base text-white/70 tracking-[0.08em] font-light"
+                  className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
                 >
                   Werte und Haltung
                 </a>
                 <a
                   href="#netzwerk"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base text-white/70 tracking-[0.08em] font-light"
+                  className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
                 >
                   Netzwerk
                 </a>
                 <a
                   href="#referenzen"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base text-white/70 tracking-[0.08em] font-light"
+                  className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
                 >
                   Referenzen
                 </a>
                 <a
                   href="#publikationen"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base text-white/70 tracking-[0.08em] font-light"
+                  className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
                 >
                   Publikationen
                 </a>
@@ -265,21 +304,21 @@ function NewHomePage() {
               <a
                 href="#ansatz"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xl text-white uppercase tracking-[0.1em] font-light"
+                className="text-xl text-white uppercase tracking-[0.1em] font-light py-1.5"
               >
                 Beratungsansatz
               </a>
               <a
                 href="#leistungen"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xl text-white uppercase tracking-[0.1em] font-light"
+                className="text-xl text-white uppercase tracking-[0.1em] font-light py-1.5"
               >
                 Leistungen
               </a>
               <a
                 href="#kontakt"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xl text-white uppercase tracking-[0.1em] font-light"
+                className="text-xl text-white uppercase tracking-[0.1em] font-light py-1.5"
               >
                 Kontakt
               </a>
@@ -299,6 +338,10 @@ function NewHomePage() {
               src={heroBackgroundImage}
               alt=""
               aria-hidden="true"
+              width={903}
+              height={581}
+              // React 18 kennt nur die kleingeschriebene DOM-Attributform
+              {...{ fetchpriority: 'high' }}
               className="h-full w-full object-cover object-top"
             />
             <div className="absolute inset-0 bg-[#101420]/25"></div>

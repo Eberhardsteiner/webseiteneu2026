@@ -119,8 +119,7 @@ const groupCompanies: Company[] = [
   },
   {
     name: 'Empfehlenswerter Arbeitgeber',
-    logoSrc:
-      'https://empfehlenswerter-arbeitgeber.de/wp-content/uploads/2024/03/Logo-%E2%80%A2-Primaer-%E2%80%A2-Normal.png',
+    logoSrc: `${BASE_PATH}/img/brands/empfehlenswerter-arbeitgeber.png`,
     focus:
       '„Empfehlenswerter Arbeitgeber“ ist eine Zertifizierung, die die Arbeitgeberattraktivität eines Unternehmens objektiv, standardisiert und unabhängig bewertet. Dazu wird ein Kriterienkatalog genutzt, der unter anderem Unternehmenskultur, Kommunikation, Nachhaltigkeit, Innovationsfähigkeit und Work-Life-Balance betrachtet. Auf Basis der Ergebnisse erhalten Unternehmen ein Zertifikat sowie konkrete Empfehlungen zur Weiterentwicklung ihrer Arbeitgeberqualität.',
     website: 'https://www.empfehlenswerter-arbeitgeber.de',
@@ -223,7 +222,8 @@ export default function UnternehmenMainContent() {
               title="Prof. Dr. Miriam Landes"
               subtitle="Senior Beraterin für Responsible Leadership, Strategie und Change | Coach für Vorstände und Geschäftsführungen | Expertin im Bereich Female und Responsible Leadership"
               imageSrc={`${BASE_PATH}/img/people/MiriamLandes.jpg`}
-              imageAlt="Prof. Dr. Miriam Landes"
+              imageWebpSrc={`${BASE_PATH}/img/people/MiriamLandes.webp`}
+              imageAlt="Porträtfoto von Prof. Dr. Miriam Landes, Geschäftsführerin des UVM-Instituts"
             >
               <div className="space-y-6 text-base text-gray-700">
                 <p className="text-lg leading-relaxed">
@@ -354,7 +354,8 @@ export default function UnternehmenMainContent() {
               title="Prof. Dr. Eberhard Steiner"
               subtitle="Senior Berater für KI-Strategie, Disruption und Führung | Coach für Vorstände und Geschäftsführungen | Experte für Strategie, Digitalisierung und Umgang mit Disruption"
               imageSrc={`${BASE_PATH}/img/people/EberhardSteiner.jpg`}
-              imageAlt="Prof. Dr. Eberhard Steiner"
+              imageWebpSrc={`${BASE_PATH}/img/people/EberhardSteiner.webp`}
+              imageAlt="Porträtfoto von Prof. Dr. Eberhard Steiner, Geschäftsführer des UVM-Instituts"
             >
               <div className="space-y-6 text-base text-gray-700">
                 <p className="text-lg leading-relaxed">

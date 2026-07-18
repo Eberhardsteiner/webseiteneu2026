@@ -68,7 +68,6 @@ const referenceGroups: ReferenceGroup[] = [
     entries: [
       { name: 'Hamberger Industriewerke GmbH' },
       { name: 'Hexal AG Holzkirchen' },
-      ,
     ],
   },
   {

@@ -1,9 +1,15 @@
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 export default function ImpressumPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <Seo
+        title="Impressum – UVM Consulting Group"
+        description="Impressum und rechtliche Angaben der UVM Consulting Group / UVM-Institut, Büros in Erding und Olching bei München."
+        noindex
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Link
           to="/"

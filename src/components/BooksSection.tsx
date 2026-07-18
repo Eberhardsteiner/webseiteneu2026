@@ -1,10 +1,12 @@
 // src/components/BooksSection.tsx
 import { BookOpen } from 'lucide-react';
+import { BASE_PATH } from '../constants/paths';
 
 type Book = {
   title: string;
   authors: string;
-  cover: string;
+  /** ISBN; Coverdateien liegen lokal unter public/img/books/<isbn>.jpg/.webp */
+  isbn: string;
   summary: string[];
 };
 
@@ -12,7 +14,7 @@ const books: Book[] = [
   {
     title: 'Psychologie der Wirtschaft (2013)',
     authors: 'Miriam Landes & Eberhard Steiner (Hrsg.)',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-531-18957-4.jpg',
+    isbn: '978-3-531-18957-4',
     summary: [
       'Umfassende Einführung in die Wirtschaftspsychologie.',
       'Verbindet psychologische Perspektiven von Individuen und Organisationen mit betriebswirtschaftlichen Sichtweisen.',
@@ -22,7 +24,7 @@ const books: Book[] = [
   {
     title: 'Kreativität und Innovation in Organisationen (2022)',
     authors: 'Miriam Landes, Eberhard Steiner & Tatjana Utz (Hrsg.)',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-662-63117-1.jpg',
+    isbn: '978-3-662-63117-1',
     summary: [
       'Tiefe Einblicke in Prozesse und Rahmenbedingungen zur Förderung von Kreativität und Innovation.',
       'Vereint Erkenntnisse aus Psychologie, Kunst, Wirtschaft, Neurowissenschaften und KI.',
@@ -32,7 +34,7 @@ const books: Book[] = [
    {
     title: 'New Work, Neues Arbeiten virtuell und in Präsenz (2023)',
     authors: 'Marc Helmold, Miriam Landes, Eberhard Steiner, Tracy Dathe & Lars Jeschio',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-658-41289-0.jpg',
+    isbn: '978-3-658-41289-0',
     summary: [
       'Bietet einen umfassenden Überblick über New Work und virtuelle Führung.',
       'Beschreibt praxisorientiert Tools und Methoden für langfristigen Erfolg und die Demokratisierung von Entscheidungen.',
@@ -42,7 +44,7 @@ const books: Book[] = [
   {
     title: 'Führung von Mitarbeitenden im Home Office (2020)',
     authors: 'Miriam Landes & Eberhard Steiner',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-658-30053-1.jpg',
+    isbn: '978-3-658-30053-1',
     summary: [
       'Analysiert psychologische, wirtschaftliche und praktische Aspekte der Führung auf Distanz.',
       'Beleuchtet die Perspektiven der Führungskraft und des Unternehmens.',
@@ -52,7 +54,7 @@ const books: Book[] = [
   {
     title: 'Erfolgreich und gesund im Homeoffice arbeiten (2021)',
     authors: 'Miriam Landes & Eberhard Steiner',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-658-32633-3.jpg',
+    isbn: '978-3-658-32633-3',
     summary: [
       'Zeigt, wie Mitarbeitende und Teams die Herausforderungen der Heimarbeit meistern.',
       'Vermittelt, wie man die Arbeit effizient organisiert und dabei Gesundheit und Wohlbefinden wahrt.',
@@ -62,7 +64,7 @@ const books: Book[] = [
   {
     title: 'Psychologische Auswirkungen von Change Prozessen (2014)',
     authors: 'Miriam Landes & Eberhard Steiner',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-658-05642-1.jpg',
+    isbn: '978-3-658-05642-1',
     summary: [
       'Betont, dass Veränderungen unvermeidbar sind und rechtzeitig gesteuert werden müssen.',
       'Ordnet Veränderungsarten in neun typische Situationen ein und analysiert Widerstände.',
@@ -72,7 +74,7 @@ const books: Book[] = [
   {
     title: 'Meta‑Führung – Besonderheiten bei der Führung von Führungskräften (2015)',
     authors: 'Miriam Landes & Eberhard Steiner',
-    cover: 'https://media.springernature.com/w153/springer-static/cover/book/978-3-658-10850-2.jpg',
+    isbn: '978-3-658-10850-2',
     summary: [
       'Analysiert Unterschiede zwischen der Führung von Mitarbeitenden und der Führung von Führungskräften.',
       'Untersucht geeignete Führungsstile für das Führen von Führungskräften.',
@@ -82,7 +84,7 @@ const books: Book[] = [
   {
     title: 'Leistungsorientierte Vergütung – Anreizsysteme wirkungsvoll gestalten (2017)',
     authors: 'Eberhard Steiner & Miriam Landes',
-    cover: 'https://exlibris.azureedge.net/covers/9783/6480/7951/5/9783648079515xl.jpg',
+    isbn: '978-3-648-07951-5',
     summary: [
       'Zeigt, wie leistungsabhängige Entlohnungssysteme aufgebaut und optimiert werden.',
       'Beleuchtet arbeitspsychologische und ökonomische Grundlagen sowie Gerechtigkeitsaspekte.',
@@ -107,12 +109,17 @@ export default function BooksSection() {
             <div key={book.title} className="bg-white p-6 rounded-xl shadow-sm flex">
               {/* Cover */}
               <div className="w-24 h-32 flex-shrink-0 mr-4">
-                <img
-                  src={book.cover}
-                  alt={`${book.title} Cover`}
-                  className="w-full h-full object-contain rounded"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet={`${BASE_PATH}/img/books/${book.isbn}.webp`} type="image/webp" />
+                  <img
+                    src={`${BASE_PATH}/img/books/${book.isbn}.jpg`}
+                    alt={`Buchcover: ${book.title} von ${book.authors}`}
+                    width={153}
+                    height={230}
+                    className="w-full h-full object-contain rounded"
+                    loading="lazy"
+                  />
+                </picture>
               </div>
               {/* Details */}
               <div>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { ROUTES, SECTIONS } from '../constants/paths';
+import { ROUTES } from '../constants/paths';
 import logoImage from '../assets/UVM_Institut_HighRes.png';
 
 export default function Header() {
@@ -63,7 +63,9 @@ export default function Header() {
           <Link to="/" className="flex items-center">
             <img
               src={logoImage}
-              alt="UVM Institut"
+              alt="Logo des UVM-Instituts"
+              width={2101}
+              height={650}
               className="h-12 md:h-14 w-auto object-contain"
             />
           </Link>

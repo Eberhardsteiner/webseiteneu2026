@@ -46,16 +46,16 @@ export default function Footer() {
             <h4 className="text-xl font-semibold mb-4">4C-Modell</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="text-sm hover:text-primary-400 transition-colors">Culture</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Culture</Link>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="text-sm hover:text-primary-400 transition-colors">Competences</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Competences</Link>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="text-sm hover:text-primary-400 transition-colors">Code of Conduct</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Code of Conduct</Link>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="text-sm hover:text-primary-400 transition-colors">Corporate Strategy</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Corporate Strategy</Link>
               </li>
             </ul>
           </div>
@@ -64,16 +64,16 @@ export default function Footer() {
             <h4 className="text-xl font-semibold mb-4">Leistungen</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="text-sm hover:text-primary-400 transition-colors">4C QuickScan</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">4C QuickScan</Link>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="text-sm hover:text-primary-400 transition-colors">Kompetenzmanagement</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Kompetenzmanagement</Link>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="text-sm hover:text-primary-400 transition-colors">Kulturentwicklung</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Kulturentwicklung</Link>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="text-sm hover:text-primary-400 transition-colors">KI & Führung</Link>
+                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">KI & Führung</Link>
               </li>
             </ul>
           </div>
@@ -84,8 +84,8 @@ export default function Footer() {
             2026 UVM Consulting Group. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
-            <Link to={ROUTES.IMPRESSUM} className="text-sm hover:text-primary-400 transition-colors">Impressum</Link>
-            <Link to={ROUTES.DATENSCHUTZ} className="text-sm hover:text-primary-400 transition-colors">Datenschutz</Link>
+            <Link to={ROUTES.IMPRESSUM} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Impressum</Link>
+            <Link to={ROUTES.DATENSCHUTZ} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Datenschutz</Link>
           </div>
         </div>
       </div>

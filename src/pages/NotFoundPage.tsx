@@ -1,10 +1,12 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-white">
+      <Seo title="Seite nicht gefunden – UVM Consulting Group" />
       <Header />
       <main id="main-content" className="pt-16 md:pt-20">
         <section className="py-20 bg-gray-50">

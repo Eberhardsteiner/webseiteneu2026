@@ -15,6 +15,7 @@ import {
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Seo from '../components/Seo';
 import { ROUTES, SECTIONS } from '../constants/paths';
 
 type TopicGroup = {
@@ -200,6 +201,10 @@ export default function FuehrungskraeftequalifizierungPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        title="Führungskräftequalifizierung – UVM Consulting Group"
+        description="Modulare Qualifizierung für Führungskräfte: Kommunikation, Konfliktmanagement, Resilienz, Innovation und Leadership – praxisnah mit kollegialer Beratung."
+      />
       <Header />
 
       <main id="main-content" className="pt-16 md:pt-20">

@@ -1,6 +1,11 @@
 import { useState, useMemo } from "react";
 
-const DIMS = [
+type DimKey = "strategy" | "culture" | "conduct" | "competences";
+type Topic = { id: string; label: string; q: string };
+type Dim = { key: DimKey; title: string; color: string; icon: string; topics: Topic[] };
+type Scores = Record<string, number>;
+
+const DIMS: Dim[] = [
   {
     key: "strategy", title: "Corporate Strategy", color: "#2a7c9e", icon: "\u25CE",
     topics: [
@@ -49,21 +54,21 @@ const MATURITY = [
   { min: 4.5, max: 5.1, label: "Pioneer", color: "#8b5cf6", desc: "Exzellenz auf ganzer Linie - Benchmark fuer andere." },
 ];
 
-function getMaturity(v) {
+function getMaturity(v: number) {
   for (let i = 0; i < MATURITY.length; i++) {
     if (v >= MATURITY[i].min && v < MATURITY[i].max) return MATURITY[i];
   }
   return MATURITY[0];
 }
 
-function Radar({ scores }) {
+function Radar({ scores }: { scores: Scores }) {
   const size = 300;
   const cx = size / 2;
   const cy = size / 2;
   const r = size * 0.36;
   const n = 4;
 
-  function pt(idx, val) {
+  function pt(idx: number, val: number) {
     const angle = -Math.PI / 2 + (idx * 2 * Math.PI) / n;
     const dist = (val / 5) * r;
     return [cx + dist * Math.cos(angle), cy + dist * Math.sin(angle)];
@@ -133,7 +138,7 @@ function Radar({ scores }) {
   );
 }
 
-function ScalePicker({ value, onChange, color }) {
+function ScalePicker({ value, onChange, color }: { value: number | undefined; onChange: (v: number) => void; color: string }) {
   return (
     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
       {SCALE.map((label, i) => {
@@ -158,12 +163,12 @@ function ScalePicker({ value, onChange, color }) {
 }
 
 export default function QuickScan4C() {
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState<Record<string, number>>({});
   const [curDim, setCurDim] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [started, setStarted] = useState(false);
 
-  function setAnswer(id, val) {
+  function setAnswer(id: string, val: number) {
     setAnswers(prev => {
       const next = { ...prev };
       next[id] = val;
@@ -175,8 +180,8 @@ export default function QuickScan4C() {
   const answeredCount = Object.keys(answers).length;
   const allDone = answeredCount === totalQ;
 
-  const dimScores = useMemo(() => {
-    const sc = {};
+  const dimScores = useMemo<Scores>(() => {
+    const sc: Scores = {};
     DIMS.forEach(d => {
       const vals = d.topics.map(t => answers[t.id]).filter(Boolean);
       sc[d.key] = vals.length > 0 ? vals.reduce((a, b) => a + b, 0) / vals.length : 0;
@@ -357,7 +362,6 @@ export default function QuickScan4C() {
   // ==================== QUESTION SCREEN ====================
   return (
     <div style={{ ...baseBg, position: "relative", overflow: "hidden" }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
       <style>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
         * { box-sizing: border-box; }
@@ -410,7 +414,7 @@ export default function QuickScan4C() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {dim.topics.map((topic, i) => {
+          {dim.topics.map((topic) => {
             const answered = !!answers[topic.id];
             return (
               <div key={topic.id} style={{
