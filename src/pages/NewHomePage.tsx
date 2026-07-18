@@ -582,7 +582,7 @@ function NewHomePage() {
             <p className="text-lg font-light leading-relaxed text-slate-muted mt-md">
               Isolierte Workshops und Strategiepapiere ändern nichts. Echte Zukunftsfähigkeit
               entsteht nur, wenn Strategie, Kultur, Kompetenzen und Verhaltensgrundsätze
-              zusammenwirken. Dafür haben wir das 4C-Modell entwickelt.
+              zusammenwirken. Dafür haben wir als wissenschaftlich fundierte Unternehmensberatung das 4C-Modell entwickelt.
             </p>
           </div>
 

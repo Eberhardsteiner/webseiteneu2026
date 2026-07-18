@@ -236,7 +236,7 @@ export default function FuehrungskraeftequalifizierungPage() {
             </div>
 
             <div className="mt-8 bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Orientierung</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Themenbereiche der Führungskräfteentwicklung</h2>
               <p className="mt-3 text-base text-gray-700 leading-relaxed">
                 Die Module sind in thematische Bereiche gegliedert, von Kommunikation und Konfliktmanagement über
                 Innovation und Problemlösung bis zu Leadership, Methodenkompetenz, Gesundheit und Vielfalt.
