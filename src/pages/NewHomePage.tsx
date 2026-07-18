@@ -136,6 +136,7 @@ function NewHomePage() {
     <div className="min-h-screen bg-white">
       <Seo
         title="UVM Consulting Group – 4C-Modell für Zukunftsfähigkeit"
+        canonicalPath="/"
         description="Wissenschaftlich fundierte Beratung für zukunftsfähige Organisationen. Das 4C-Modell verbindet Strategie, Kultur, Code of Conduct und Kompetenzen."
       />
       <Helmet defer={false}>
@@ -727,7 +728,7 @@ function NewHomePage() {
         </div>
       </section>
 
-      <UnternehmenMainContent />
+      <UnternehmenMainContent titleAs="h2" />
 
       <section id="kontakt" className="py-3xl bg-[#101420]">
         <div className="max-w-container mx-auto px-md">

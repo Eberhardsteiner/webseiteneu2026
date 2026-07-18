@@ -23,7 +23,7 @@ function PageLoader() {
 function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter basename={BASE_PATH}>
+      <BrowserRouter basename={BASE_PATH || '/'}>
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path={ROUTES.HOME} element={<NewHomePage />} />

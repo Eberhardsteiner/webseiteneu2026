@@ -203,6 +203,7 @@ export default function FuehrungskraeftequalifizierungPage() {
     <div className="min-h-screen bg-white">
       <Seo
         title="Führungskräftequalifizierung – UVM Consulting Group"
+        canonicalPath="/fuehrungskraeftequalifizierung"
         description="Modulare Qualifizierung für Führungskräfte: Kommunikation, Konfliktmanagement, Resilienz, Innovation und Leadership – praxisnah mit kollegialer Beratung."
       />
       <Header />
@@ -229,7 +230,7 @@ export default function FuehrungskraeftequalifizierungPage() {
                 </h1>
                 <p className="mt-2 text-lg text-gray-700 leading-relaxed">
                   Die Qualifizierung ist modular aufgebaut. Je nach Rolle, Erfahrung und Zielsetzung lassen
-                  sich einzelne Trainings oder komplette Lernpfade kombinieren.
+                  sich einzelne Trainings oder komplette Lernpfade zur Führungskräfteentwicklung kombinieren.
                 </p>
               </div>
             </div>

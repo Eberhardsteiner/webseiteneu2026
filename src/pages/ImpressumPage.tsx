@@ -7,6 +7,7 @@ export default function ImpressumPage() {
     <div className="min-h-screen bg-gray-50">
       <Seo
         title="Impressum – UVM Consulting Group"
+        canonicalPath="/impressum"
         description="Impressum und rechtliche Angaben der UVM Consulting Group / UVM-Institut, Büros in Erding und Olching bei München."
         noindex
       />

@@ -1,4 +1,7 @@
-export const BASE_PATH = '/web2026';
+// Deploy liegt im Domain-Root (uvm-cg.de/...). Wird sowohl als Router-basename
+// (dort als '/' via BASE_PATH || '/') als auch als Präfix aller lokalen
+// Bildpfade genutzt — immer beide Verwendungen gemeinsam ändern!
+export const BASE_PATH = '';
 
 export const ROUTES = {
   HOME: '/',

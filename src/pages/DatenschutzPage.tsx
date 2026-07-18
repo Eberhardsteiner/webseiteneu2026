@@ -7,6 +7,7 @@ export default function DatenschutzPage() {
     <div className="min-h-screen bg-gray-50">
       <Seo
         title="Datenschutz – UVM Consulting Group"
+        canonicalPath="/datenschutz"
         description="Datenschutzerklärung der UVM Consulting Group: Informationen zur Verarbeitung personenbezogener Daten auf dieser Website."
         noindex
       />

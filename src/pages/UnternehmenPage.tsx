@@ -8,6 +8,7 @@ export default function UnternehmenPage() {
     <div className="min-h-screen bg-white">
       <Seo
         title="Unternehmen – UVM Consulting Group & UVM-Institut"
+        canonicalPath="/unternehmen"
         description="Das UVM-Institut verbindet Ökonomie und Psychologie: Strategie, Change, Führungskräfteentwicklung und Coaching – geführt von Prof. Landes und Prof. Steiner."
       />
       <Header />

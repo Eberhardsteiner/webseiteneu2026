@@ -139,7 +139,13 @@ const groupCompanies: Company[] = [
   }
 ];
 
-export default function UnternehmenMainContent() {
+type UnternehmenMainContentProps = {
+  /** 'h1' auf der eigenen Seite /unternehmen, 'h2' eingebettet auf der Startseite
+      (dort ist der Hero bereits die H1 — genau eine H1 pro Seite) */
+  titleAs?: 'h1' | 'h2';
+};
+
+export default function UnternehmenMainContent({ titleAs: TitleTag = 'h1' }: UnternehmenMainContentProps) {
   const location = useLocation();
 
   const scrollToHashElement = (hash: string) => {
@@ -179,7 +185,7 @@ export default function UnternehmenMainContent() {
             <div className="p-3 bg-primary-600 rounded-lg">
               <Building2 size={32} className="text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white">UVM Consulting Group</h1>
+            <TitleTag className="text-4xl md:text-5xl font-bold text-white">UVM Consulting Group</TitleTag>
           </div>
           <div className="prose prose-lg max-w-none prose-invert">
             <p className="text-lg text-white leading-relaxed mb-6">
