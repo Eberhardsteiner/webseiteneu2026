@@ -2,6 +2,9 @@ import { ChevronDown, ExternalLink, Users } from 'lucide-react';
 
 type NetworkPartner = {
   name: string;
+  /** Sortierschlüssel: Nachname der Person bzw. prägender Unternehmensname.
+      Ohne Angabe wird nach name sortiert. */
+  sortKey?: string;
   meta?: string;
   topics: string[];
   website?: {
@@ -11,7 +14,6 @@ type NetworkPartner = {
 
 // Quelle: https://www.uvm-consultinggroup.de/netzwerk
 const networkPartners: NetworkPartner[] = [
-  
   {
     name: 'Ask.Us',
     meta: 'Klaus Augustin und Angelika Malinowski',
@@ -19,15 +21,15 @@ const networkPartners: NetworkPartner[] = [
     website: {
       url: 'https://ask-us-consulting.de/',
     },
-   },
- {
+  },
+  {
     name: 'Axxtas GmbH',
-     meta: 'Tim Kumpat',
+    meta: 'Tim Kumpat',
     topics: ['KI', 'Digitalisierung'],
     website: {
       url: 'https://axxtas.com/de',
-  }, 
     },
+  },
   {
     name: 'com motus Leaders Academy GmbH',
     meta: 'Ilona Dittner',
@@ -38,18 +40,17 @@ const networkPartners: NetworkPartner[] = [
   },
   {
     name: 'Verena Diews',
-    topics: ['Coaching', 'Changemanagement' ],
-    
-     
+    sortKey: 'Diews',
+    topics: ['Coaching', 'Changemanagement'],
   },
-   {
+  {
     name: 'Stephan Th. Greif Consulting',
+    sortKey: 'Greif',
     topics: ['Outdoor-Training', 'Projektmanagement', 'Consulting'],
-  website: {
+    website: {
       url: 'https://stephangreif.de/',
     },
-     },
-  
+  },
   {
     name: 'Institut für Human Factors',
     meta: 'Prof. Dr. Stephanie Rascher',
@@ -60,14 +61,23 @@ const networkPartners: NetworkPartner[] = [
   },
   {
     name: 'Verena Jobst Coaching',
+    sortKey: 'Jobst',
     topics: ['Coaching'],
-    
+  },
+  {
+    name: 'Schäuble Consulting GmbH',
+    sortKey: 'Schäuble',
+    meta: 'Wolfgang Schäuble & Susann Schäuble',
+    topics: ['Führung in Krisen', 'Strategisches Krisenmanagement'],
+    website: {
+      url: 'https://www.schaeuble-consulting.de/',
+    },
   },
   {
     name: 'Prof. Dr. Matthias Spörrle',
+    sortKey: 'Spörrle',
     topics: ['Psychologie', 'KI'],
-      },
-  
+  },
 ];
 
 function TopicBadges({ topics }: { topics: string[] }) {
@@ -86,8 +96,9 @@ function TopicBadges({ topics }: { topics: string[] }) {
 }
 
 export default function NetworkPartnersSection() {
+  // Alphabetisch nach Nachname (Personen) bzw. Unternehmensname
   const sortedPartners = [...networkPartners].sort((a, b) =>
-    a.name.localeCompare(b.name, 'de', { sensitivity: 'base' })
+    (a.sortKey ?? a.name).localeCompare(b.sortKey ?? b.name, 'de', { sensitivity: 'base' })
   );
 
   return (
