@@ -21,6 +21,13 @@ const ROUTES = [
   { path: '/datenschutz/', out: 'datenschutz/index.html' },
   { path: '/aktuelles/', out: 'aktuelles/index.html' },
   { path: '/verwaltung/', out: 'verwaltung/index.html' },
+  { path: '/leistungen/', out: 'leistungen/index.html' },
+  { path: '/leistungen/ki-strategie-und-digitalisierung/', out: 'leistungen/ki-strategie-und-digitalisierung/index.html' },
+  { path: '/leistungen/change-management-und-unternehmenskultur/', out: 'leistungen/change-management-und-unternehmenskultur/index.html' },
+  { path: '/leistungen/leadership-principles-und-code-of-conduct/', out: 'leistungen/leadership-principles-und-code-of-conduct/index.html' },
+  { path: '/leistungen/kompetenzmanagement-und-future-skills/', out: 'leistungen/kompetenzmanagement-und-future-skills/index.html' },
+  { path: '/leistungen/female-leadership/', out: 'leistungen/female-leadership/index.html' },
+  { path: '/leistungen/coaching-fuer-fuehrungskraefte/', out: 'leistungen/coaching-fuer-fuehrungskraefte/index.html' },
   // Unbekannter Pfad -> NotFoundPage; viele Static-Hosts liefern 404.html automatisch aus
   { path: '/__not_found__', out: '404.html' },
 ];

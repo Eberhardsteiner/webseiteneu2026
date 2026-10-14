@@ -12,6 +12,16 @@ export const ROUTES = {
   DATENSCHUTZ: '/datenschutz/',
   AKTUELLES: '/aktuelles/',
   VERWALTUNG: '/verwaltung/',
+  LEISTUNGEN: '/leistungen/',
+} as const;
+
+export const ROUTES_LEISTUNGEN = {
+  KI_STRATEGIE: '/leistungen/ki-strategie-und-digitalisierung/',
+  CHANGE_MANAGEMENT: '/leistungen/change-management-und-unternehmenskultur/',
+  CODE_OF_CONDUCT: '/leistungen/leadership-principles-und-code-of-conduct/',
+  KOMPETENZMANAGEMENT: '/leistungen/kompetenzmanagement-und-future-skills/',
+  FEMALE_LEADERSHIP: '/leistungen/female-leadership/',
+  COACHING: '/leistungen/coaching-fuer-fuehrungskraefte/',
 } as const;
 
 export const SECTIONS = {

@@ -7,6 +7,7 @@ import Seo from '../components/Seo';
 import UnternehmenMainContent from '../components/UnternehmenMainContent';
 import ProductsSection from '../components/ProductsSection';
 import QuickScan4C from '../components/QuickScan4C';
+import { THEMEN, FORMATE } from '../data/leistungen';
 import logoImage from '../assets/UVM_Institut_HighRes.png';
 import heroBackgroundImage from '../assets/ESTML3.jpg';
 
@@ -429,98 +430,32 @@ function NewHomePage() {
               }`}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-lg pt-lg border-t border-white/10 text-left">
-                <div className="space-y-2xl">
-                  <div id="intro-disruption" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                    <h3 className="text-2xl font-semibold text-accent">Disruption strategisch gestalten</h3>
-                    <p className="italic text-white/70">
-                      Wie bereite ich meine Organisation auf Umbrüche vor, die noch niemand kommen sieht?
-                    </p>
-                    <p>
-                      Disruption trifft die, die sich für unverwundbar halten. Viele Organisationen investieren in Innovationsprogramme, agile Methoden und digitale Transformation. Dennoch scheitern Veränderungsprozesse regelmäßig – nicht an der Strategie, sondern an der Fähigkeit, Gewohntes loszulassen.
-                    </p>
-                    <p>
-                      Wer Disruption nur als technologisches Phänomen begreift, übersieht ihren eigentlichen Hebel: die Bereitschaft von Führungskräften, das eigene Geschäftsmodell radikal zu hinterfragen. Der 4C-Navigator beginnt bei der Corporate Strategy – nicht als Planungsübung, sondern als ehrliche Standortbestimmung: Wie weit tragen Ihre Prozesse, wenn sich die Spielregeln ändern?
-                    </p>
+                {[THEMEN.slice(0, 2), THEMEN.slice(2, 4)].map((spalte, spaltenIndex) => (
+                  <div key={spaltenIndex} className="space-y-2xl">
+                    {spalte.map((thema) => (
+                      <div key={thema.id} id={thema.id} className="space-y-md scroll-mt-32 md:scroll-mt-36">
+                        <h3 className="text-2xl font-semibold text-accent">{thema.titel}</h3>
+                        <p className="italic text-white/70">{thema.frage}</p>
+                        {thema.absaetze.map((absatz, i) => (
+                          <p key={i}>{absatz}</p>
+                        ))}
+                      </div>
+                    ))}
                   </div>
-
-                  <div id="intro-trust-ki" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                    <h3 className="text-2xl font-semibold text-accent">Trust & KI-Strategie</h3>
-                    <p className="italic text-white/70">
-                      Wie schaffe ich Vertrauen in einer Organisation, die zunehmend von Algorithmen mitgesteuert wird?
-                    </p>
-                    <p>
-                      Künstliche Intelligenz verändert nicht nur Prozesse – sie verschiebt die Grundlagen, auf denen Vertrauen in Organisationen entsteht. Die entscheidende Hürde ist nicht die Technologie, sondern die Akzeptanz. Mitarbeitende fragen sich, ob Entscheidungen noch nachvollziehbar sind. Führungskräfte stehen vor der Herausforderung, Verantwortung zu übernehmen für Ergebnisse, die sie nicht vollständig durchdringen.
-                    </p>
-                    <p>
-                      Im 4C-Modell greifen hier zwei Dimensionen ineinander: Corporate Strategy liefert den Rahmen für den KI-Einsatz – von der Digitalisierungsstrategie über People Analytics bis zur Prozessoptimierung. Der Code of Conduct stellt sicher, dass dieser Einsatz ethisch fundiert und nachvollziehbar bleibt. Vertrauenswürdige KI-Strategie beginnt nicht im Serverraum, sondern dort, wo Prinzipien auf Entscheidungen treffen – in der Führungsetage.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2xl">
-                  <div id="intro-trustful-leadership" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                    <h3 className="text-2xl font-semibold text-accent">Trustful Leadership</h3>
-                    <p className="italic text-white/70">
-                      Wie führe ich so, dass Menschen mir auch dann folgen, wenn der Weg unsicher ist?
-                    </p>
-                    <p>
-                      In Zeiten permanenter Veränderung wird Vertrauen zur knappsten Ressource in Organisationen. Klassische Führungsmodelle setzen auf Kontrolle, Zielvorgaben und Reporting. Diese Instrumente verlieren ihre Wirksamkeit, wenn Märkte sich schneller verändern als Planungszyklen reichen.
-                    </p>
-                    <p>
-                      Trustful Leadership ist im 4C-Modell kein Einzelbaustein, sondern das verbindende Prinzip: Culture & Change schafft die psychologische Sicherheit, in der Offenheit möglich wird. Die Competences-Dimension entwickelt die Fähigkeiten, die vertrauensbasierte Führung im Alltag braucht – von systemischer Gesprächsführung bis zur Fähigkeit, Verletzlichkeit als Stärke zu begreifen. Nicht als weiches Kulturprogramm, sondern als strategische Kernkompetenz.
-                    </p>
-                  </div>
-
-                  <div id="intro-female-leadership" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                    <h3 className="text-2xl font-semibold text-accent">Female Leadership</h3>
-                    <p className="italic text-white/70">
-                      Wie entfaltet Führung ihre volle Wirkung, wenn Perspektivenvielfalt kein Lippenbekenntnis bleibt?
-                    </p>
-                    <p>
-                      Diversity in Führungspositionen ist kein Fairness-Thema – es ist eine Frage der strategischen Intelligenz. Diverse Führungsteams treffen bessere Entscheidungen, erkennen Risiken früher und reagieren flexibler auf Veränderungen. Dennoch verharren viele Organisationen in homogenen Strukturen – nicht aus bösem Willen, sondern weil Systeme sich selbst reproduzieren.
-                    </p>
-                    <p>
-                      Hier zeigt der 4C-Navigator, warum isolierte Maßnahmen scheitern: Mentoring allein ändert keine Culture, Quoten allein ersetzen keine Competence-Entwicklung, und Leitbilder bleiben wirkungslos ohne einen Code of Conduct, der Perspektivenvielfalt in konkretes Führungshandeln übersetzt. Female Leadership strategisch zu fördern bedeutet, alle vier Dimensionen gleichzeitig in den Blick zu nehmen.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 pt-2xl mt-2xl border-t border-white/10 text-left">
-                <div id="intro-beratung" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                  <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3070B0' }}>Beratung</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Wir begleiten Vorstände, Geschäftsführungen und Führungsteams bei strategischen Fragen zu Disruption, Digitalisierung, KI und Führung. Gemeinsam klären wir Ausgangslage, Zielbild und Prioritäten und übersetzen komplexe Entwicklungen in belastbare Entscheidungen, klare Verantwortlichkeiten und realistische nächste Schritte.
-                  </p>
-                </div>
-
-                <div id="intro-workshops" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                  <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3070B0' }}>Workshops</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Unsere Workshops schaffen einen strukturierten Raum, um Perspektiven zu bündeln, Spannungen sichtbar zu machen und tragfähige Lösungen zu erarbeiten. So entstehen nicht nur gute Diskussionen, sondern konkrete Entscheidungen, belastbare Roadmaps und eine gemeinsame Grundlage für wirksame Umsetzung.
-                  </p>
-                </div>
-
-                <div id="intro-coachings" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                  <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3070B0' }}>Coachings</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    In unseren Coachings begleiten wir Führungskräfte und Schlüsselpersonen in Phasen hoher Dynamik, Unsicherheit oder persönlicher Neuorientierung. Im vertraulichen Sparring stärken wir Entscheidungsfähigkeit, kommunikative Klarheit und Führungswirksamkeit, besonders im Zusammenspiel von KI, Veränderung und Verantwortung.
-                  </p>
-                </div>
-
-                <div id="intro-vortraege" className="space-y-md scroll-mt-32 md:scroll-mt-36">
-                  <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3070B0' }}>Vorträge</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Unsere Vorträge verbinden wissenschaftliche Fundierung mit strategischer Relevanz und klarer Sprache. Wir geben Impulse zu KI, Trustful Leadership, Disruption, Kulturwandel und Female Leadership, die Orientierung geben, Diskussionen öffnen und den Blick auf konkrete Handlungsfelder lenken.
-                  </p>
-                </div>
-
-                <div id="intro-schulungen" className="space-y-md md:col-span-2 scroll-mt-32 md:scroll-mt-36">
-                  <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3070B0' }}>Schulungen</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Unsere Schulungen vermitteln Wissen praxisnah, anschlussfähig und auf die Realität Ihrer Organisation zugeschnitten. Wir qualifizieren Führungskräfte, Mitarbeitende und Multiplikatoren in Themen wie KI-Kompetenz, Veränderungsfähigkeit, Kommunikation und Führung, damit aus Erkenntnis tatsächlich neue Praxis entsteht.
-                  </p>
-                </div>
+                {FORMATE.map((format) => (
+                  <div
+                    key={format.id}
+                    id={format.id}
+                    className={`space-y-md ${format.id === 'intro-schulungen' ? 'md:col-span-2 ' : ''}scroll-mt-32 md:scroll-mt-36`}
+                  >
+                    <h3 className="text-lg md:text-xl font-semibold" style={{ color: '#3070B0' }}>{format.titel}</h3>
+                    <p className="text-white/80 leading-relaxed">{format.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
