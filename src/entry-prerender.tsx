@@ -2,6 +2,7 @@
 // Wird nie im Browser geladen. Die Routen sind hier bewusst OHNE lazy()
 // importiert (renderToString kann nicht auf lazy-Chunks warten) — bei neuen
 // Routen bitte App.tsx UND diese Datei anpassen.
+import { Suspense } from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
@@ -30,22 +31,26 @@ export function render(path: string): { html: string; helmet: HelmetServerState 
   const html = renderToString(
     <HelmetProvider context={helmetContext}>
       <StaticRouter location={path} basename="/">
-        <Routes>
-          <Route path={ROUTES.HOME} element={<NewHomePage />} />
-          <Route path={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG} element={<FuehrungskraeftequalifizierungPage />} />
-          <Route path={ROUTES.IMPRESSUM} element={<ImpressumPage />} />
-          <Route path={ROUTES.DATENSCHUTZ} element={<DatenschutzPage />} />
-          <Route path={ROUTES.AKTUELLES} element={<AktuellesPage />} />
-          <Route path={ROUTES.VERWALTUNG} element={<VerwaltungPage />} />
-          <Route path={ROUTES.LEISTUNGEN} element={<LeistungenPage />} />
-          <Route path={ROUTES_LEISTUNGEN.KI_STRATEGIE} element={<KiStrategiePage />} />
-          <Route path={ROUTES_LEISTUNGEN.CHANGE_MANAGEMENT} element={<ChangeManagementPage />} />
-          <Route path={ROUTES_LEISTUNGEN.CODE_OF_CONDUCT} element={<CodeOfConductPage />} />
-          <Route path={ROUTES_LEISTUNGEN.KOMPETENZMANAGEMENT} element={<KompetenzmanagementPage />} />
-          <Route path={ROUTES_LEISTUNGEN.FEMALE_LEADERSHIP} element={<FemaleLeadershipPage />} />
-          <Route path={ROUTES_LEISTUNGEN.COACHING} element={<CoachingPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        {/* Gleiche <Suspense>-Grenze wie in App.tsx: Sie erzeugt die Marker im HTML,
+            die hydrateRoot erwartet, solange die lazy-Chunks im Browser noch laden. */}
+        <Suspense fallback={null}>
+          <Routes>
+            <Route path={ROUTES.HOME} element={<NewHomePage />} />
+            <Route path={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG} element={<FuehrungskraeftequalifizierungPage />} />
+            <Route path={ROUTES.IMPRESSUM} element={<ImpressumPage />} />
+            <Route path={ROUTES.DATENSCHUTZ} element={<DatenschutzPage />} />
+            <Route path={ROUTES.AKTUELLES} element={<AktuellesPage />} />
+            <Route path={ROUTES.VERWALTUNG} element={<VerwaltungPage />} />
+            <Route path={ROUTES.LEISTUNGEN} element={<LeistungenPage />} />
+            <Route path={ROUTES_LEISTUNGEN.KI_STRATEGIE} element={<KiStrategiePage />} />
+            <Route path={ROUTES_LEISTUNGEN.CHANGE_MANAGEMENT} element={<ChangeManagementPage />} />
+            <Route path={ROUTES_LEISTUNGEN.CODE_OF_CONDUCT} element={<CodeOfConductPage />} />
+            <Route path={ROUTES_LEISTUNGEN.KOMPETENZMANAGEMENT} element={<KompetenzmanagementPage />} />
+            <Route path={ROUTES_LEISTUNGEN.FEMALE_LEADERSHIP} element={<FemaleLeadershipPage />} />
+            <Route path={ROUTES_LEISTUNGEN.COACHING} element={<CoachingPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </StaticRouter>
     </HelmetProvider>
   );
