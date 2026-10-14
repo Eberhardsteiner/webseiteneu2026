@@ -129,7 +129,9 @@ const groupCompanies: Company[] = [
     name: 'UVM-Akademie',
     logoSrc: `${BASE_PATH}/img/brands/UVM_Akademie.png`,
     focus:
-      'In der UVM-Akademie bündeln wir unsere Fort- und Weiterbildungsangebote sowie den Bereich der Führungskräfteentwicklung. Ebenso haben wir hier die gesamte E-Learning-Aktivitäten und Business Games (z.B. Crisis Manager) fokussiert"'
+      'In der UVM-Akademie bündeln wir unsere Fort- und Weiterbildungsangebote sowie den Bereich der Führungskräfteentwicklung. Ebenso haben wir hier die gesamte E-Learning-Aktivitäten und Business Games (z.B. Crisis Manager) fokussiert.',
+    website: 'https://uvm-akademie.de',
+    websiteLabel: 'uvm-akademie.de'
   },
   {
     name: 'UVM Innovationlab',

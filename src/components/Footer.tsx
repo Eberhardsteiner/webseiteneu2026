@@ -1,6 +1,16 @@
 import { Linkedin, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ROUTES, SECTIONS } from '../constants/paths';
+import { ROUTES, ROUTES_LEISTUNGEN, SECTIONS } from '../constants/paths';
+
+const leistungsLinks = [
+  { label: 'KI-Strategie und Digitalisierung', pfad: ROUTES_LEISTUNGEN.KI_STRATEGIE },
+  { label: 'Change Management und Unternehmenskultur', pfad: ROUTES_LEISTUNGEN.CHANGE_MANAGEMENT },
+  { label: 'Leadership Principles und Code of Conduct', pfad: ROUTES_LEISTUNGEN.CODE_OF_CONDUCT },
+  { label: 'Kompetenzmanagement und Future Skills', pfad: ROUTES_LEISTUNGEN.KOMPETENZMANAGEMENT },
+  { label: 'Female Leadership', pfad: ROUTES_LEISTUNGEN.FEMALE_LEADERSHIP },
+  { label: 'Coaching für Führungskräfte', pfad: ROUTES_LEISTUNGEN.COACHING },
+  { label: 'Führungskräftequalifizierung', pfad: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
+];
 
 export default function Footer() {
   return (
@@ -14,6 +24,17 @@ export default function Footer() {
             <p className="text-base text-gray-400 mb-4 max-w-md">
               Wissenschaftlich fundiert. Praktisch erprobt. Wir befähigen Organisationen,
               zukunftsfähig zu werden.
+            </p>
+            <p className="text-sm text-gray-400 mb-4">
+              Seminare und Programme:{' '}
+              <a
+                href="https://uvm-akademie.de/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary-400 transition-colors"
+              >
+                uvm-akademie.de
+              </a>
             </p>
             <div className="flex gap-4">
               <a
@@ -63,18 +84,13 @@ export default function Footer() {
           <div>
             <h4 className="text-xl font-semibold mb-4">Leistungen</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">4C QuickScan</Link>
-              </li>
-              <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Kompetenzmanagement</Link>
-              </li>
-              <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Kulturentwicklung</Link>
-              </li>
-              <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.LEISTUNGEN}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">KI & Führung</Link>
-              </li>
+              {leistungsLinks.map((link) => (
+                <li key={link.pfad}>
+                  <Link to={link.pfad} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

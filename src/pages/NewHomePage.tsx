@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Zap, Target, Users, Shield, X } from 'lucide-react';
-import { ROUTES } from '../constants/paths';
+import { ROUTES, ROUTES_LEISTUNGEN } from '../constants/paths';
 import { Helmet } from 'react-helmet-async';
 import Seo from '../components/Seo';
 import UnternehmenMainContent from '../components/UnternehmenMainContent';
@@ -10,6 +10,17 @@ import QuickScan4C from '../components/QuickScan4C';
 import { THEMEN, FORMATE } from '../data/leistungen';
 import logoImage from '../assets/UVM_Institut_HighRes.png';
 import heroBackgroundImage from '../assets/ESTML3.jpg';
+
+const FOOTER_LEISTUNGSLINKS = [
+  { label: 'Leistungen', pfad: ROUTES.LEISTUNGEN },
+  { label: 'KI-Strategie', pfad: ROUTES_LEISTUNGEN.KI_STRATEGIE },
+  { label: 'Change Management', pfad: ROUTES_LEISTUNGEN.CHANGE_MANAGEMENT },
+  { label: 'Code of Conduct', pfad: ROUTES_LEISTUNGEN.CODE_OF_CONDUCT },
+  { label: 'Kompetenzmanagement', pfad: ROUTES_LEISTUNGEN.KOMPETENZMANAGEMENT },
+  { label: 'Female Leadership', pfad: ROUTES_LEISTUNGEN.FEMALE_LEADERSHIP },
+  { label: 'Coaching', pfad: ROUTES_LEISTUNGEN.COACHING },
+  { label: 'Führungskräftequalifizierung', pfad: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
+];
 
 function NewHomePage() {
   const [scrolled, setScrolled] = useState(false);
@@ -765,25 +776,46 @@ function NewHomePage() {
                 +49 89 15 9000 75
               </a>
             </div>
-            <div className="flex gap-lg">
-              <Link
-                to={ROUTES.AKTUELLES}
-                className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
-              >
-                Aktuelles
-              </Link>
-              <Link
-                to={ROUTES.IMPRESSUM}
-                className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
-              >
-                Impressum
-              </Link>
-              <Link
-                to={ROUTES.DATENSCHUTZ}
-                className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
-              >
-                Datenschutz
-              </Link>
+            <div className="flex flex-col items-start gap-md">
+              <div className="flex flex-wrap gap-x-lg gap-y-2 max-w-xl">
+                {FOOTER_LEISTUNGSLINKS.map((link) => (
+                  <Link
+                    key={link.pfad}
+                    to={link.pfad}
+                    className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <a
+                  href="https://uvm-akademie.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
+                >
+                  UVM-Akademie
+                </a>
+              </div>
+              <div className="flex gap-lg">
+                <Link
+                  to={ROUTES.AKTUELLES}
+                  className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
+                >
+                  Aktuelles
+                </Link>
+                <Link
+                  to={ROUTES.IMPRESSUM}
+                  className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
+                >
+                  Impressum
+                </Link>
+                <Link
+                  to={ROUTES.DATENSCHUTZ}
+                  className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
+                >
+                  Datenschutz
+                </Link>
+              </div>
             </div>
           </div>
           <div className="pt-md">

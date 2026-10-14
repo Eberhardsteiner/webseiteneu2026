@@ -1,54 +1,155 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type RefObject } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
-import { ROUTES } from '../constants/paths';
+import { Link } from 'react-router-dom';
+import { ROUTES, ROUTES_LEISTUNGEN } from '../constants/paths';
 import logoImage from '../assets/UVM_Institut_HighRes.png';
+
+type MenuEintrag = { label: string; href: string };
+type Aufklappmenue = 'unternehmen' | 'leistungen';
+
+// Anker auf der Startseite als normale <a>-Links, damit die Startseite
+// vollständig geladen wird und der Browser zum Anker springt.
+const unternehmenItems: MenuEintrag[] = [
+  { label: 'UVM Consulting Group', href: `${ROUTES.HOME}#uvm-consulting` },
+  { label: 'Geschäftsführung', href: `${ROUTES.HOME}#geschaeftsfuehrung` },
+  { label: 'Werte und Haltung', href: `${ROUTES.HOME}#werte` },
+  { label: 'Netzwerk', href: `${ROUTES.HOME}#netzwerk` },
+  { label: 'Referenzen', href: `${ROUTES.HOME}#referenzen` },
+  { label: 'Publikationen', href: `${ROUTES.HOME}#publikationen` },
+];
+
+const leistungenItems: MenuEintrag[] = [
+  { label: 'Alle Leistungen', href: ROUTES.LEISTUNGEN },
+  { label: 'KI-Strategie und Digitalisierung', href: ROUTES_LEISTUNGEN.KI_STRATEGIE },
+  { label: 'Change Management und Unternehmenskultur', href: ROUTES_LEISTUNGEN.CHANGE_MANAGEMENT },
+  { label: 'Leadership Principles und Code of Conduct', href: ROUTES_LEISTUNGEN.CODE_OF_CONDUCT },
+  { label: 'Kompetenzmanagement und Future Skills', href: ROUTES_LEISTUNGEN.KOMPETENZMANAGEMENT },
+  { label: 'Female Leadership', href: ROUTES_LEISTUNGEN.FEMALE_LEADERSHIP },
+  { label: 'Coaching für Führungskräfte', href: ROUTES_LEISTUNGEN.COACHING },
+  { label: 'Führungskräftequalifizierung', href: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
+];
+
+const KONTAKT_HREF = `${ROUTES.HOME}#kontakt`;
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
-  const isHomePage = location.pathname === ROUTES.HOME || location.pathname === '/';
+  const [offenesMenue, setOffenesMenue] = useState<Aufklappmenue | null>(null);
+  const unternehmenRef = useRef<HTMLDivElement>(null);
+  const leistungenRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isOpen) {
-      setIsDropdownOpen(false);
+      setOffenesMenue(null);
     }
   }, [isOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
+      const ziel = event.target as Node;
+      if (!unternehmenRef.current?.contains(ziel) && !leistungenRef.current?.contains(ziel)) {
+        setOffenesMenue(null);
       }
     };
 
-    if (isDropdownOpen) {
+    if (offenesMenue && !isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isDropdownOpen]);
+  }, [offenesMenue, isOpen]);
 
-  const navItems = [
-    { label: 'Beratungsansatz', href: '#ansatz' },
-    { label: 'Prozess', href: '#prozess' },
-    { label: 'Führungskräfte', href: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
-    { label: 'Aktuelles', href: ROUTES.AKTUELLES },
-    { label: 'Kontakt', href: '#kontakt' },
-  ];
+  const umschalten = (menue: Aufklappmenue) =>
+    setOffenesMenue((aktuell) => (aktuell === menue ? null : menue));
 
-  const dropdownItems = [
-    { label: 'UVM Consulting Group', href: `${ROUTES.HOME}#uvm-consulting` },
-    { label: 'Geschäftsführung', href: `${ROUTES.HOME}#geschaeftsfuehrung` },
-    { label: 'Werte und Haltung', href: `${ROUTES.HOME}#werte` },
-    { label: 'Netzwerk', href: `${ROUTES.HOME}#netzwerk` },
-    { label: 'Referenzen', href: `${ROUTES.HOME}#referenzen` },
-    { label: 'Publikationen', href: `${ROUTES.HOME}#publikationen` },
-  ];
+  const desktopMenue = (
+    menue: Aufklappmenue,
+    label: string,
+    items: MenuEintrag[],
+    ref: RefObject<HTMLDivElement>,
+    alsRouterLink: boolean
+  ) => (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        aria-expanded={offenesMenue === menue}
+        aria-haspopup="true"
+        onClick={() => umschalten(menue)}
+        className="flex items-center gap-1 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
+      >
+        {label}
+        <ChevronDown size={16} className={`transition-transform ${offenesMenue === menue ? 'rotate-180' : ''}`} />
+      </button>
+
+      {offenesMenue === menue && (
+        <div className="absolute top-full left-0 pt-1 w-72">
+          <div className="bg-white rounded-lg shadow-xl border border-slate-200/60 py-2">
+            {items.map((item) =>
+              alsRouterLink ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setOffenesMenue(null)}
+                  className="block px-4 py-3 text-sm text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOffenesMenue(null)}
+                  className="block px-4 py-3 text-sm text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+
+  const mobilesMenue = (menue: Aufklappmenue, label: string, items: MenuEintrag[], alsRouterLink: boolean) => (
+    <div>
+      <button
+        type="button"
+        aria-expanded={offenesMenue === menue}
+        onClick={() => umschalten(menue)}
+        className="w-full flex items-center justify-between py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
+      >
+        {label}
+        <ChevronDown size={16} className={`transition-transform ${offenesMenue === menue ? 'rotate-180' : ''}`} />
+      </button>
+      {offenesMenue === menue && (
+        <div className="pl-4 space-y-2">
+          {items.map((item) =>
+            alsRouterLink ? (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="block py-2 text-sm text-gray-600 hover:text-primary-500 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block py-2 text-sm text-gray-600 hover:text-primary-500 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </a>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -72,70 +173,33 @@ export default function Header() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
-            <div className="relative" ref={dropdownRef}>
-              <button
-                type="button"
-                aria-expanded={isDropdownOpen}
-                aria-haspopup="true"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-1 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
-              >
-                Unternehmen
-                <ChevronDown size={16} className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-
-              {isDropdownOpen && (
-                <div className="absolute top-full left-0 pt-1 w-64">
-                  <div className="bg-white rounded-lg shadow-xl border border-slate-200/60 py-2">
-                    {dropdownItems.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setIsDropdownOpen(false)}
-                        className="block px-4 py-3 text-sm text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {navItems.map((item) => {
-              const isExternalLink = item.href.startsWith('#');
-              const isRouteLink = !isExternalLink;
-
-              if (isRouteLink) {
-                const hervorgehoben = item.href === ROUTES.AKTUELLES;
-                return (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className={`text-base transition-colors font-medium whitespace-nowrap ${
-                      hervorgehoben
-                        ? 'text-primary-600 hover:text-primary-700 border-b-2 border-primary-500/50 pb-0.5'
-                        : 'text-gray-700 hover:text-primary-500'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
-
-              return (
-                <a
-                  key={item.href}
-                  href={isHomePage ? item.href : `${ROUTES.HOME}${item.href}`}
-                  className="text-base text-gray-700 hover:text-primary-500 transition-colors font-medium whitespace-nowrap"
-                >
-                  {item.label}
-                </a>
-              );
-            })}
+            {desktopMenue('unternehmen', 'Unternehmen', unternehmenItems, unternehmenRef, false)}
 
             <a
-              href={isHomePage ? '#kontakt' : `${ROUTES.HOME}#kontakt`}
+              href={`${ROUTES.HOME}#ansatz`}
+              className="text-base text-gray-700 hover:text-primary-500 transition-colors font-medium whitespace-nowrap"
+            >
+              Beratungsansatz
+            </a>
+
+            {desktopMenue('leistungen', 'Leistungen', leistungenItems, leistungenRef, true)}
+
+            <Link
+              to={ROUTES.AKTUELLES}
+              className="text-base transition-colors font-medium whitespace-nowrap text-primary-600 hover:text-primary-700 border-b-2 border-primary-500/50 pb-0.5"
+            >
+              Aktuelles
+            </Link>
+
+            <a
+              href={KONTAKT_HREF}
+              className="text-base text-gray-700 hover:text-primary-500 transition-colors font-medium whitespace-nowrap"
+            >
+              Kontakt
+            </a>
+
+            <a
+              href={KONTAKT_HREF}
               className="bg-primary-500 text-white px-5 py-2.5 rounded-lg text-base hover:bg-primary-600 transition-colors font-medium whitespace-nowrap"
             >
               Gespräch starten
@@ -153,64 +217,36 @@ export default function Header() {
 
         {isOpen && (
           <nav className="md:hidden py-4 border-t border-slate-200/60 bg-white/95">
-            <div>
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="w-full flex items-center justify-between py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
-              >
-                Unternehmen
-                <ChevronDown size={16} className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isDropdownOpen && (
-                <div className="pl-4 space-y-2">
-                  {dropdownItems.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      className="block py-2 text-sm text-gray-600 hover:text-primary-500 transition-colors"
-                      onClick={() => {
-                        setIsOpen(false);
-                        setIsDropdownOpen(false);
-                      }}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {navItems.map((item) => {
-              const isExternalLink = item.href.startsWith('#');
-              const isRouteLink = !isExternalLink;
-
-              if (isRouteLink) {
-                return (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className="block py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
-
-              return (
-                <a
-                  key={item.href}
-                  href={isHomePage ? item.href : `${ROUTES.HOME}${item.href}`}
-                  className="block py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
+            {mobilesMenue('unternehmen', 'Unternehmen', unternehmenItems, false)}
 
             <a
-              href={isHomePage ? '#kontakt' : `${ROUTES.HOME}#kontakt`}
+              href={`${ROUTES.HOME}#ansatz`}
+              className="block py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Beratungsansatz
+            </a>
+
+            {mobilesMenue('leistungen', 'Leistungen', leistungenItems, true)}
+
+            <Link
+              to={ROUTES.AKTUELLES}
+              className="block py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Aktuelles
+            </Link>
+
+            <a
+              href={KONTAKT_HREF}
+              className="block py-3 text-base text-gray-700 hover:text-primary-500 transition-colors font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Kontakt
+            </a>
+
+            <a
+              href={KONTAKT_HREF}
               className="block mt-4 bg-primary-500 text-white px-5 py-2.5 rounded-lg text-base hover:bg-primary-600 transition-colors font-medium text-center"
               onClick={() => setIsOpen(false)}
             >

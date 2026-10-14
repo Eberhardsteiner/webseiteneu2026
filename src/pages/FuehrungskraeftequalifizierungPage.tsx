@@ -1,7 +1,6 @@
 import type { ComponentType } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
-  ArrowLeft,
   Briefcase,
   ChevronDown,
   Globe2,
@@ -16,7 +15,9 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { BROTKRUME_LEISTUNGEN, BROTKRUME_STARTSEITE, Brotkrumen } from '../components/LeistungsseiteLayout';
 import { ROUTES, SECTIONS } from '../constants/paths';
+import { FUEHRUNGSKRAEFTE_EINLEITUNG } from '../data/leistungen';
 
 type TopicGroup = {
   title: string;
@@ -197,8 +198,6 @@ const categories: Category[] = [
 ];
 
 export default function FuehrungskraeftequalifizierungPage() {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-white">
       <Seo
@@ -211,14 +210,13 @@ export default function FuehrungskraeftequalifizierungPage() {
       <main id="main-content" className="pt-16 md:pt-20">
         <section className="py-16 md:py-20 bg-gradient-to-br from-violet-50 to-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <button
-              type="button"
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-base text-gray-600 hover:text-violet-700 transition-colors font-medium"
-            >
-              <ArrowLeft size={18} />
-              Zurück
-            </button>
+            <Brotkrumen
+              items={[
+                BROTKRUME_STARTSEITE,
+                BROTKRUME_LEISTUNGEN,
+                { label: 'Führungskräftequalifizierung', pfad: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
+              ]}
+            />
 
             <div className="mt-8 flex items-start gap-4">
               <div className="p-3 bg-violet-600 rounded-xl">
@@ -228,9 +226,18 @@ export default function FuehrungskraeftequalifizierungPage() {
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
                   Führungskräftequalifizierung
                 </h1>
+                <p className="mt-2 text-lg text-gray-700 leading-relaxed">{FUEHRUNGSKRAEFTE_EINLEITUNG}</p>
                 <p className="mt-2 text-lg text-gray-700 leading-relaxed">
-                  Die Qualifizierung ist modular aufgebaut. Je nach Rolle, Erfahrung und Zielsetzung lassen
-                  sich einzelne Trainings oder komplette Lernpfade zur Führungskräfteentwicklung kombinieren.
+                  Die Module werden über die{' '}
+                  <a
+                    href="https://uvm-akademie.de/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-600 hover:text-primary-700 underline font-medium"
+                  >
+                    UVM-Akademie
+                  </a>{' '}
+                  durchgeführt.
                 </p>
               </div>
             </div>
