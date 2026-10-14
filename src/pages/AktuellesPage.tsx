@@ -3,6 +3,7 @@ import { ExternalLink } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { ROUTES } from '../constants/paths';
 import Einbettung from '../components/Einbettung';
 import { getSupabase, supabaseKonfiguriert } from '../lib/supabase';
 import {
@@ -82,7 +83,7 @@ export default function AktuellesPage() {
     <div className="min-h-screen bg-white">
       <Seo
         title="Aktuelles – UVM Consulting Group"
-        canonicalPath="/aktuelles"
+        canonicalPath={ROUTES.AKTUELLES}
         description="Aktuelle Beiträge der UVM Consulting Group: LinkedIn-Beiträge, Podcasts, Bücher, Artikel und Veranstaltungen zu Führung, Organisation und Strategie."
       />
       <Header />

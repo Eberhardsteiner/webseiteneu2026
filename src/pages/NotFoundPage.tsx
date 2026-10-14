@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { ROUTES } from '../constants/paths';
 import { Link } from 'react-router-dom';
 
 export default function NotFoundPage() {
@@ -17,7 +18,7 @@ export default function NotFoundPage() {
             </p>
             <div className="mt-8">
               <Link
-                to="/"
+                to={ROUTES.HOME}
                 className="inline-flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-lg text-base font-medium hover:bg-primary-700 transition-colors"
               >
                 Zur Startseite

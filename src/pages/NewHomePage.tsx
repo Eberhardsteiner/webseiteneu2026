@@ -108,8 +108,8 @@ function NewHomePage() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'UVM Consulting Group',
-    url: 'https://uvm-cg.de',
-    logo: 'https://uvm-cg.de/og-image.png',
+    url: 'https://www.uvm-consultinggroup.de',
+    logo: 'https://www.uvm-consultinggroup.de/og-image.png',
     email: 'info@uvm-institut.de',
     telephone: '+49 89 15900075',
     faxNumber: '+49 89 3612713',
@@ -130,13 +130,14 @@ function NewHomePage() {
         addressCountry: 'DE',
       },
     ],
+    sameAs: ['https://www.linkedin.com/company/uvm-consulting'],
   });
 
   return (
     <div className="min-h-screen bg-white">
       <Seo
         title="UVM Consulting Group – 4C-Modell für Zukunftsfähigkeit"
-        canonicalPath="/"
+        canonicalPath={ROUTES.HOME}
         description="Wissenschaftlich fundierte Beratung für zukunftsfähige Organisationen. Das 4C-Modell verbindet Strategie, Kultur, Code of Conduct und Kompetenzen."
       />
       <Helmet defer={false}>

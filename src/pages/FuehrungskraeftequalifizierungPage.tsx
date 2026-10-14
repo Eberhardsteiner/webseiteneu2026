@@ -203,7 +203,7 @@ export default function FuehrungskraeftequalifizierungPage() {
     <div className="min-h-screen bg-white">
       <Seo
         title="Führungskräftequalifizierung – UVM Consulting Group"
-        canonicalPath="/fuehrungskraeftequalifizierung"
+        canonicalPath={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG}
         description="Modulare Qualifizierung für Führungskräfte: Kommunikation, Konfliktmanagement, Resilienz, Innovation und Leadership – praxisnah mit kollegialer Beratung."
       />
       <Header />
@@ -317,7 +317,7 @@ export default function FuehrungskraeftequalifizierungPage() {
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <Link
-                  to="/"
+                  to={ROUTES.HOME}
                   className="inline-flex items-center justify-center bg-white text-primary-700 px-6 py-3 rounded-lg text-base font-medium hover:bg-primary-50 transition-colors"
                 >
                   Zur Startseite

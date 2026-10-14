@@ -61,7 +61,7 @@ export default function Header() {
       <header className="fixed top-0 left-0 right-0 bg-white/92 backdrop-blur-md z-50 border-b border-slate-200/60 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20 min-h-[64px] md:min-h-[80px]">
-          <Link to="/" className="flex items-center">
+          <Link to={ROUTES.HOME} className="flex items-center">
             <img
               src={logoImage}
               alt="Logo des UVM-Instituts"

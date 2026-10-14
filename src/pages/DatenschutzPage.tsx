@@ -1,19 +1,20 @@
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import { ROUTES } from '../constants/paths';
 
 export default function DatenschutzPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Seo
         title="Datenschutz – UVM Consulting Group"
-        canonicalPath="/datenschutz"
+        canonicalPath={ROUTES.DATENSCHUTZ}
         description="Datenschutzerklärung der UVM Consulting Group: Informationen zur Verarbeitung personenbezogener Daten auf dieser Website."
         noindex
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Link
-          to="/"
+          to={ROUTES.HOME}
           className="inline-flex items-center gap-2 text-base text-primary-600 hover:text-primary-700 mb-8 transition-colors"
         >
           <ArrowLeft size={20} />

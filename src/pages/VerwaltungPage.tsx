@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import type { Session } from '@supabase/supabase-js';
 import { Eye, EyeOff, LogOut, Pencil, Plus, Trash2, X } from 'lucide-react';
 import Seo from '../components/Seo';
+import { ROUTES } from '../constants/paths';
 import Einbettung from '../components/Einbettung';
 import { getSupabase, supabaseKonfiguriert } from '../lib/supabase';
 import {
@@ -616,11 +617,11 @@ export default function VerwaltungPage() {
       <Seo title="Verwaltung Aktuelles – UVM Consulting Group" noindex />
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <Link to={ROUTES.HOME} className="flex items-center">
             <img src={logoImage} alt="Logo des UVM-Instituts" width={2101} height={650} className="h-10 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-4 text-sm">
-            <Link to="/aktuelles" className="text-gray-700 hover:text-primary-600">
+            <Link to={ROUTES.AKTUELLES} className="text-gray-700 hover:text-primary-600">
               Seite „Aktuelles“ ansehen
             </Link>
             {session && (
