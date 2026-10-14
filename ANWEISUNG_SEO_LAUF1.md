@@ -10,14 +10,14 @@ Oberste Regel: Das Erscheinungsbild der Startseite (src/pages/NewHomePage.tsx mi
 - /unternehmen zeigt exakt denselben Inhalt wie die Startseite (UnternehmenMainContent). Doppelter Inhalt.
 - Die Unterseiten nutzen src/components/Header.tsx und Footer.tsx. Die Startseite hat eine eigene Navigation und einen eigenen Footer in NewHomePage.tsx. Header.tsx enthält noch einen Menüpunkt "Prozess" und "Führungskräfte", die Startseite nicht.
 - Es gibt keine Leistungsseiten. Die 16 Produkte liegen als Daten in src/components/ProductsSection.tsx (Array quadrants) und sind nur in einem Modal sichtbar. Die vier Themen (Disruption, Trust & KI, Trustful Leadership, Female Leadership) und die fünf Formate (Beratung, Workshops, Coachings, Vorträge, Schulungen) stehen als Text im aufklappbaren Bereich der Startseite (NewHomePage.tsx, ids intro-disruption bis intro-schulungen).
-- Im Arbeitsverzeichnis liegen vermutlich noch nicht eingecheckte Änderungen (Seiten /aktuelles und /verwaltung, Supabase-Anbindung). Diese Arbeit darf nicht verloren gehen.
+- Der aktuelle Stand (Seiten /aktuelles und /verwaltung, Supabase-Anbindung, dist-Build, diese Anweisung) ist auf dem Branch phase3-ssg im Commit e4b0259 eingecheckt. Das Arbeitsverzeichnis ist sauber.
 - .env ist in .gitignore und bleibt dort. Niemals Inhalte aus .env in Code oder Bericht übernehmen.
 
 ## 1. Git vorbereiten
 
-1. `git status` prüfen. Gibt es uneingecheckte Änderungen, zuerst alles auf dem aktuellen Branch committen mit der Nachricht `Stand vor SEO-Lauf 1 (Aktuelles und Verwaltung)`.
-2. Neuen Branch `seo-lauf-1` anlegen und darauf arbeiten.
-3. .gitignore um die Zeilen `dist/` und `.prerender/` ergänzen. Falls dist bereits getrackt ist: `git rm -r --cached dist`. Die Dateien dist.zip und eslint.config.zip ebenfalls aus dem Repository entfernen (`git rm --cached`, Dateien auf der Platte belassen).
+1. Auf dem Branch phase3-ssg stehen. `git status` muss sauber sein. Falls der Commit e4b0259 noch die Nachricht `1` trägt und noch nicht gepusht ist: Nachricht per `git commit --amend` ändern in `Aktuelles und Verwaltung mit Supabase-Anbindung, SEO-Anweisung`, danach `git push`. Ist er bereits gepusht, nichts ändern.
+2. Von phase3-ssg aus den neuen Branch `seo-lauf-1` anlegen und darauf arbeiten.
+3. .gitignore um die Zeilen `dist/` und `.prerender/` ergänzen. dist ist seit e4b0259 getrackt, deshalb `git rm -r --cached dist` ausführen (Dateien auf der Platte belassen). Die Dateien dist.zip und eslint.config.zip ebenfalls aus dem Repository entfernen (`git rm --cached`, Dateien auf der Platte belassen). Commit: `Build-Ordner und Archive aus Git entfernen`.
 4. Nach jedem der folgenden Abschnitte einen Commit mit sprechender Nachricht.
 
 ## 2. Hauptadresse korrigieren
@@ -203,8 +203,9 @@ Sitemap: https://www.uvm-consultinggroup.de/sitemap.xml
 1. `npm run typecheck` und `npm run build` müssen fehlerfrei durchlaufen. Der Build muss für jede Route eine Datei dist/<route>/index.html erzeugen, in der H1, Einleitung und Produkttexte als HTML enthalten sind (nicht nur ein leerer root-Container).
 2. Kleines Skript scripts/links.mjs: liest alle HTML-Dateien in dist, sammelt interne href-Ziele und prüft, dass jedes Ziel als Datei existiert. Null kaputte Links. Ergebnis in den Bericht.
 3. Mit `grep -r "uvm-cg.de" dist --include=*.html` prüfen: Es dürfen nur noch E-Mail-Adressen gefunden werden.
-4. Alles committen. Nicht pushen.
-5. Datei BERICHT_SEO_LAUF1.md im Projektordner schreiben: Was wurde geändert (je Abschnitt), welche Entscheidungen wurden selbst getroffen, Ausgabe von typecheck, build, links.mjs und grep, Liste der Dateien in dist (erste Ebene), Hinweis zum Upload der .htaccess.
+4. Alles committen. Branch seo-lauf-1 pushen, keinen Pull Request anlegen.
+5. Datenschutz-Feststellung ohne Codeänderung: In AktuellesPage.tsx, VerwaltungPage.tsx, lib/supabase.ts und lib/aktuelles.ts nachsehen, ob Cookies oder localStorage gesetzt werden (supabase-js legt die Anmeldesitzung der Verwaltungsseite üblicherweise in localStorage ab) und an welche fremde Adresse Anfragen gehen (die Supabase-Projektadresse). Ergebnis nur in den Bericht schreiben, Abschnitt "Datenschutz". Die Datenschutzerklärung wird in einem späteren Lauf angepasst.
+6. Datei BERICHT_SEO_LAUF1.md im Projektordner schreiben: Was wurde geändert (je Abschnitt), welche Entscheidungen wurden selbst getroffen, Ausgabe von typecheck, build, links.mjs und grep, Liste der Dateien in dist (erste Ebene), Hinweis zum Upload der .htaccess, Abschnitt Datenschutz.
 
 ## 9. Was du nicht tun darfst
 
@@ -212,4 +213,4 @@ Sitemap: https://www.uvm-consultinggroup.de/sitemap.xml
 - Keine neuen Abhängigkeiten installieren.
 - Keine Änderungen an AktuellesPage, VerwaltungPage, lib/aktuelles.ts, lib/supabase.ts über das in Abschnitt 2 und 7 Genannte hinaus.
 - Keine Gestaltungsänderungen an der Startseite außer Abschnitt 6.1.
-- Kein Push, kein Pull Request.
+- Kein Pull Request, kein Merge in phase3-ssg oder main.
