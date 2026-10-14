@@ -84,6 +84,7 @@ export default function Footer() {
             2026 UVM Consulting Group. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
+            <Link to={ROUTES.AKTUELLES} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Aktuelles</Link>
             <Link to={ROUTES.IMPRESSUM} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Impressum</Link>
             <Link to={ROUTES.DATENSCHUTZ} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Datenschutz</Link>
           </div>

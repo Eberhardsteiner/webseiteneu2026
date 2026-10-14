@@ -231,6 +231,12 @@ function NewHomePage() {
             >
               Leistungen
             </a>
+            <Link
+              to={ROUTES.AKTUELLES}
+              className="text-xs font-semibold text-accent-light tracking-[0.1em] uppercase transition-colors hover:text-white border-b border-accent/60 pb-0.5"
+            >
+              Aktuelles
+            </Link>
             <a
               href="#kontakt"
               className="bg-accent text-white px-5 py-2.5 text-xs font-semibold tracking-[0.08em] uppercase transition-all hover:bg-accent-light"
@@ -316,6 +322,13 @@ function NewHomePage() {
               >
                 Leistungen
               </a>
+              <Link
+                to={ROUTES.AKTUELLES}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-xl text-accent-light uppercase tracking-[0.1em] font-normal py-1.5"
+              >
+                Aktuelles
+              </Link>
               <a
                 href="#kontakt"
                 onClick={() => setMobileMenuOpen(false)}
@@ -817,6 +830,12 @@ function NewHomePage() {
               </a>
             </div>
             <div className="flex gap-lg">
+              <Link
+                to={ROUTES.AKTUELLES}
+                className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"
+              >
+                Aktuelles
+              </Link>
               <Link
                 to={ROUTES.IMPRESSUM}
                 className="text-xs text-white/35 uppercase tracking-[0.1em] transition-colors hover:text-white"

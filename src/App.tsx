@@ -9,6 +9,8 @@ const UnternehmenPage = lazy(() => import('./pages/UnternehmenPage'));
 const FuehrungskraeftequalifizierungPage = lazy(() => import('./pages/FuehrungskraeftequalifizierungPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
+const AktuellesPage = lazy(() => import('./pages/AktuellesPage'));
+const VerwaltungPage = lazy(() => import('./pages/VerwaltungPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 // Loading fallback component
@@ -31,6 +33,8 @@ function App() {
             <Route path={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG} element={<FuehrungskraeftequalifizierungPage />} />
             <Route path={ROUTES.IMPRESSUM} element={<ImpressumPage />} />
             <Route path={ROUTES.DATENSCHUTZ} element={<DatenschutzPage />} />
+            <Route path={ROUTES.AKTUELLES} element={<AktuellesPage />} />
+            <Route path={ROUTES.VERWALTUNG} element={<VerwaltungPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

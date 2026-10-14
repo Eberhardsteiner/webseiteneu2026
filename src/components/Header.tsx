@@ -37,6 +37,7 @@ export default function Header() {
     { label: 'Beratungsansatz', href: '#ansatz' },
     { label: 'Prozess', href: '#prozess' },
     { label: 'Führungskräfte', href: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
+    { label: 'Aktuelles', href: ROUTES.AKTUELLES },
     { label: 'Kontakt', href: '#kontakt' },
   ];
 
@@ -106,11 +107,16 @@ export default function Header() {
               const isRouteLink = !isExternalLink;
 
               if (isRouteLink) {
+                const hervorgehoben = item.href === ROUTES.AKTUELLES;
                 return (
                   <Link
                     key={item.href}
                     to={item.href}
-                    className="text-base text-gray-700 hover:text-primary-500 transition-colors font-medium whitespace-nowrap"
+                    className={`text-base transition-colors font-medium whitespace-nowrap ${
+                      hervorgehoben
+                        ? 'text-primary-600 hover:text-primary-700 border-b-2 border-primary-500/50 pb-0.5'
+                        : 'text-gray-700 hover:text-primary-500'
+                    }`}
                   >
                     {item.label}
                   </Link>

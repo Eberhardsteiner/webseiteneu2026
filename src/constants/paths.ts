@@ -9,6 +9,8 @@ export const ROUTES = {
   FUEHRUNGSKRAEFTEQUALIFIZIERUNG: '/fuehrungskraeftequalifizierung',
   IMPRESSUM: '/impressum',
   DATENSCHUTZ: '/datenschutz',
+  AKTUELLES: '/aktuelles',
+  VERWALTUNG: '/verwaltung',
 } as const;
 
 export const SECTIONS = {

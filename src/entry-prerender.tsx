@@ -14,6 +14,8 @@ import UnternehmenPage from './pages/UnternehmenPage';
 import FuehrungskraeftequalifizierungPage from './pages/FuehrungskraeftequalifizierungPage';
 import ImpressumPage from './pages/ImpressumPage';
 import DatenschutzPage from './pages/DatenschutzPage';
+import AktuellesPage from './pages/AktuellesPage';
+import VerwaltungPage from './pages/VerwaltungPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export function render(path: string): { html: string; helmet: HelmetServerState } {
@@ -28,6 +30,8 @@ export function render(path: string): { html: string; helmet: HelmetServerState 
           <Route path={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG} element={<FuehrungskraeftequalifizierungPage />} />
           <Route path={ROUTES.IMPRESSUM} element={<ImpressumPage />} />
           <Route path={ROUTES.DATENSCHUTZ} element={<DatenschutzPage />} />
+          <Route path={ROUTES.AKTUELLES} element={<AktuellesPage />} />
+          <Route path={ROUTES.VERWALTUNG} element={<VerwaltungPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </StaticRouter>
