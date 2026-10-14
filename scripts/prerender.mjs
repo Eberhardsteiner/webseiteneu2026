@@ -16,7 +16,6 @@ const ssrOutDir = join(root, '.prerender');
 // Route -> Ausgabedatei relativ zu dist/
 const ROUTES = [
   { path: '/', out: 'index.html' },
-  { path: '/unternehmen/', out: 'unternehmen/index.html' },
   { path: '/fuehrungskraeftequalifizierung/', out: 'fuehrungskraeftequalifizierung/index.html' },
   { path: '/impressum/', out: 'impressum/index.html' },
   { path: '/datenschutz/', out: 'datenschutz/index.html' },

@@ -5,7 +5,6 @@ import ErrorBoundary from './components/ErrorBoundary';
 import { BASE_PATH, ROUTES } from './constants/paths';
 
 // Lazy load routes for code splitting
-const UnternehmenPage = lazy(() => import('./pages/UnternehmenPage'));
 const FuehrungskraeftequalifizierungPage = lazy(() => import('./pages/FuehrungskraeftequalifizierungPage'));
 const ImpressumPage = lazy(() => import('./pages/ImpressumPage'));
 const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'));
@@ -29,7 +28,6 @@ function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path={ROUTES.HOME} element={<NewHomePage />} />
-            <Route path={ROUTES.UNTERNEHMEN} element={<UnternehmenPage />} />
             <Route path={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG} element={<FuehrungskraeftequalifizierungPage />} />
             <Route path={ROUTES.IMPRESSUM} element={<ImpressumPage />} />
             <Route path={ROUTES.DATENSCHUTZ} element={<DatenschutzPage />} />

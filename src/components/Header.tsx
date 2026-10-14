@@ -42,12 +42,12 @@ export default function Header() {
   ];
 
   const dropdownItems = [
-    { label: 'UVM Consulting Group', href: `${ROUTES.UNTERNEHMEN}#uvm-consulting` },
-    { label: 'Geschäftsführung', href: `${ROUTES.UNTERNEHMEN}#geschaeftsfuehrung` },
-    { label: 'Werte und Haltung', href: `${ROUTES.UNTERNEHMEN}#werte` },
-    { label: 'Netzwerk', href: `${ROUTES.UNTERNEHMEN}#netzwerk` },
-    { label: 'Referenzen', href: `${ROUTES.UNTERNEHMEN}#referenzen` },
-    { label: 'Publikationen', href: `${ROUTES.UNTERNEHMEN}#publikationen` },
+    { label: 'UVM Consulting Group', href: `${ROUTES.HOME}#uvm-consulting` },
+    { label: 'Geschäftsführung', href: `${ROUTES.HOME}#geschaeftsfuehrung` },
+    { label: 'Werte und Haltung', href: `${ROUTES.HOME}#werte` },
+    { label: 'Netzwerk', href: `${ROUTES.HOME}#netzwerk` },
+    { label: 'Referenzen', href: `${ROUTES.HOME}#referenzen` },
+    { label: 'Publikationen', href: `${ROUTES.HOME}#publikationen` },
   ];
 
   return (
@@ -88,14 +88,14 @@ export default function Header() {
                 <div className="absolute top-full left-0 pt-1 w-64">
                   <div className="bg-white rounded-lg shadow-xl border border-slate-200/60 py-2">
                     {dropdownItems.map((item) => (
-                      <Link
+                      <a
                         key={item.href}
-                        to={item.href}
+                        href={item.href}
                         onClick={() => setIsDropdownOpen(false)}
                         className="block px-4 py-3 text-sm text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors"
                       >
                         {item.label}
-                      </Link>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -164,9 +164,9 @@ export default function Header() {
               {isDropdownOpen && (
                 <div className="pl-4 space-y-2">
                   {dropdownItems.map((item) => (
-                    <Link
+                    <a
                       key={item.href}
-                      to={item.href}
+                      href={item.href}
                       className="block py-2 text-sm text-gray-600 hover:text-primary-500 transition-colors"
                       onClick={() => {
                         setIsOpen(false);
@@ -174,7 +174,7 @@ export default function Header() {
                       }}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   ))}
                 </div>
               )}

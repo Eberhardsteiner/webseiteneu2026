@@ -10,7 +10,6 @@ import type { HelmetServerState } from 'react-helmet-async';
 import { ROUTES } from './constants/paths';
 
 import NewHomePage from './pages/NewHomePage';
-import UnternehmenPage from './pages/UnternehmenPage';
 import FuehrungskraeftequalifizierungPage from './pages/FuehrungskraeftequalifizierungPage';
 import ImpressumPage from './pages/ImpressumPage';
 import DatenschutzPage from './pages/DatenschutzPage';
@@ -26,7 +25,6 @@ export function render(path: string): { html: string; helmet: HelmetServerState 
       <StaticRouter location={path} basename="/">
         <Routes>
           <Route path={ROUTES.HOME} element={<NewHomePage />} />
-          <Route path={ROUTES.UNTERNEHMEN} element={<UnternehmenPage />} />
           <Route path={ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG} element={<FuehrungskraeftequalifizierungPage />} />
           <Route path={ROUTES.IMPRESSUM} element={<ImpressumPage />} />
           <Route path={ROUTES.DATENSCHUTZ} element={<DatenschutzPage />} />

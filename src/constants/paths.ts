@@ -7,7 +7,6 @@ export const BASE_PATH = '';
 // dist/<route>/index.html ohne Umleitung aus, und Canonical/Sitemap stimmen überein).
 export const ROUTES = {
   HOME: '/',
-  UNTERNEHMEN: '/unternehmen/',
   FUEHRUNGSKRAEFTEQUALIFIZIERUNG: '/fuehrungskraeftequalifizierung/',
   IMPRESSUM: '/impressum/',
   DATENSCHUTZ: '/datenschutz/',
