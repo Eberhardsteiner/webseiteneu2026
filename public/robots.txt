@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /verwaltung
+Disallow: /verwaltung/
 
 Sitemap: https://www.uvm-consultinggroup.de/sitemap.xml

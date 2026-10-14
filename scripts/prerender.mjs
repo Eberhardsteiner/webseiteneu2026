@@ -3,7 +3,8 @@
 //  1. baut src/entry-prerender.tsx als SSR-Bundle nach .prerender/,
 //  2. rendert jede Route zu HTML (inkl. Helmet-Titel/Meta/Canonical/JSON-LD),
 //  3. schreibt dist/index.html, dist/<route>/index.html und dist/404.html,
-//  4. räumt .prerender/ wieder weg.
+//  4. erzeugt dist/sitemap.xml aus der Routenliste (ohne Einträge mit sitemap: false),
+//  5. räumt .prerender/ wieder weg.
 // Keine neuen Abhängigkeiten: nutzt Vite + react-dom/server aus dem Projekt.
 import { execSync } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
@@ -12,15 +13,16 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ssrOutDir = join(root, '.prerender');
+const SITE_URL = 'https://www.uvm-consultinggroup.de';
 
-// Route -> Ausgabedatei relativ zu dist/
+// Route -> Ausgabedatei relativ zu dist/; sitemap: false = nicht in dist/sitemap.xml
 const ROUTES = [
   { path: '/', out: 'index.html' },
   { path: '/fuehrungskraeftequalifizierung/', out: 'fuehrungskraeftequalifizierung/index.html' },
   { path: '/impressum/', out: 'impressum/index.html' },
   { path: '/datenschutz/', out: 'datenschutz/index.html' },
   { path: '/aktuelles/', out: 'aktuelles/index.html' },
-  { path: '/verwaltung/', out: 'verwaltung/index.html' },
+  { path: '/verwaltung/', out: 'verwaltung/index.html', sitemap: false },
   { path: '/leistungen/', out: 'leistungen/index.html' },
   { path: '/leistungen/ki-strategie-und-digitalisierung/', out: 'leistungen/ki-strategie-und-digitalisierung/index.html' },
   { path: '/leistungen/change-management-und-unternehmenskultur/', out: 'leistungen/change-management-und-unternehmenskultur/index.html' },
@@ -29,7 +31,7 @@ const ROUTES = [
   { path: '/leistungen/female-leadership/', out: 'leistungen/female-leadership/index.html' },
   { path: '/leistungen/coaching-fuer-fuehrungskraefte/', out: 'leistungen/coaching-fuer-fuehrungskraefte/index.html' },
   // Unbekannter Pfad -> NotFoundPage; viele Static-Hosts liefern 404.html automatisch aus
-  { path: '/__not_found__', out: '404.html' },
+  { path: '/__not_found__', out: '404.html', sitemap: false },
 ];
 
 console.log('[prerender] SSR-Bundle bauen …');
@@ -63,6 +65,23 @@ for (const { path, out } of ROUTES) {
   writeFileSync(target, page);
   console.log(`[prerender] ${path} -> dist/${out} (${Math.round(page.length / 1024)} kB)`);
 }
+
+// Sitemap: absolute URLs mit abschließendem Schrägstrich, lastmod = Build-Datum (lokal, JJJJ-MM-TT)
+const heute = new Date();
+const lastmod = [
+  heute.getFullYear(),
+  String(heute.getMonth() + 1).padStart(2, '0'),
+  String(heute.getDate()).padStart(2, '0'),
+].join('-');
+const sitemapRouten = ROUTES.filter((r) => r.sitemap !== false);
+const urls = sitemapRouten
+  .map((r) => `  <url>\n    <loc>${SITE_URL}${r.path}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`)
+  .join('\n');
+writeFileSync(
+  join(root, 'dist', 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+);
+console.log(`[prerender] dist/sitemap.xml (${sitemapRouten.length} URLs, lastmod ${lastmod})`);
 
 rmSync(ssrOutDir, { recursive: true, force: true });
 console.log('[prerender] fertig.');
