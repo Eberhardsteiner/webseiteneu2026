@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Jede andere Domain und jeder Aufruf ohne www auf die Hauptadresse umleiten
+RewriteCond %{HTTP_HOST} !^www\.uvm-consultinggroup\.de$ [NC]
+RewriteRule ^(.*)$ https://www.uvm-consultinggroup.de/$1 [R=301,L]
+
+# http auf https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://www.uvm-consultinggroup.de/$1 [R=301,L]
+
+# Alte Seite /unternehmen gibt es nicht mehr, Inhalt steht auf der Startseite
+RewriteRule ^unternehmen/?$ https://www.uvm-consultinggroup.de/ [R=301,L]
+
+ErrorDocument 404 /404.html
