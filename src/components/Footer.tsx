@@ -65,18 +65,20 @@ export default function Footer() {
 
           <div>
             <h4 className="text-xl font-semibold mb-4">4C-Modell</h4>
+            {/* Normale <a>-Links: Die Startseite lädt vollständig und der Browser springt zum Anker
+                (ein React-Router-Link ändert nur die Adresse und bleibt oben auf der Seite) */}
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Culture</Link>
+                <a href={`${ROUTES.HOME}${SECTIONS.ANSATZ}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Culture</a>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Competences</Link>
+                <a href={`${ROUTES.HOME}${SECTIONS.ANSATZ}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Competences</a>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Code of Conduct</Link>
+                <a href={`${ROUTES.HOME}${SECTIONS.ANSATZ}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Code of Conduct</a>
               </li>
               <li>
-                <Link to={`${ROUTES.HOME}${SECTIONS.MODELL}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Corporate Strategy</Link>
+                <a href={`${ROUTES.HOME}${SECTIONS.ANSATZ}`} className="inline-block py-1 text-sm hover:text-primary-400 transition-colors">Corporate Strategy</a>
               </li>
             </ul>
           </div>

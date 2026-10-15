@@ -25,7 +25,7 @@ export const ROUTES_LEISTUNGEN = {
 } as const;
 
 export const SECTIONS = {
-  MODELL: '#modell',
+  ANSATZ: '#ansatz',
   PROZESS: '#prozess',
   LEISTUNGEN: '#leistungen',
   KONTAKT: '#kontakt',
