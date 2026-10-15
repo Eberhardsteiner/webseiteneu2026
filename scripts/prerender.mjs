@@ -16,11 +16,12 @@ const ssrOutDir = join(root, '.prerender');
 const SITE_URL = 'https://www.uvm-consultinggroup.de';
 
 // Route -> Ausgabedatei relativ zu dist/; sitemap: false = nicht in dist/sitemap.xml
+// (noindex-Seiten wie Impressum und Datenschutz, die Verwaltung und die 404-Seite)
 const ROUTES = [
   { path: '/', out: 'index.html' },
   { path: '/fuehrungskraeftequalifizierung/', out: 'fuehrungskraeftequalifizierung/index.html' },
-  { path: '/impressum/', out: 'impressum/index.html' },
-  { path: '/datenschutz/', out: 'datenschutz/index.html' },
+  { path: '/impressum/', out: 'impressum/index.html', sitemap: false },
+  { path: '/datenschutz/', out: 'datenschutz/index.html', sitemap: false },
   { path: '/aktuelles/', out: 'aktuelles/index.html' },
   { path: '/verwaltung/', out: 'verwaltung/index.html', sitemap: false },
   { path: '/leistungen/', out: 'leistungen/index.html' },
