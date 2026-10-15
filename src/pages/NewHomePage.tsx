@@ -346,9 +346,10 @@ function NewHomePage() {
       </nav>
 
       {mobileMenuOpen && (
-        // m-auto zentriert wie bisher; reicht die Höhe nicht (Leistungen aufgeklappt), lässt sich scrollen
+        // m-auto zentriert wie bisher; reicht die Höhe nicht (Leistungen aufgeklappt), lässt sich scrollen.
+        // Aufgeklappt beginnt der Inhalt unterhalb der fixierten Navigation (72 px), sonst läge der Anfang darunter.
         <div className="fixed inset-0 z-40 bg-[#101420] flex overflow-y-auto">
-          <div className="m-auto text-center">
+          <div className={`m-auto text-center ${mobileLeistungenOpen ? 'pt-20 pb-8' : ''}`}>
             <div className="flex flex-col gap-lg">
               <div className="flex flex-col gap-3">
                 <span className="text-sm text-accent uppercase tracking-[0.15em] font-semibold">
