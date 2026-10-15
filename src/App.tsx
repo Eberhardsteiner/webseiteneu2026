@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useLayoutEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import NewHomePage from './pages/NewHomePage';
 import ErrorBoundary from './components/ErrorBoundary';
 import { BASE_PATH, ROUTES, ROUTES_LEISTUNGEN } from './constants/paths';
@@ -28,10 +28,37 @@ function PageLoader() {
   );
 }
 
+// BrowserRouter behält beim Seitenwechsel die alte Scrollposition. Deshalb bei
+// jedem Wechsel des Pfads oben beginnen (bzw. am Anker, falls der Link einen
+// hat). Ein Wechsel nur des Hash auf derselben Seite ändert den Pfad nicht und
+// springt wie bisher zum Anker. Beim ersten Laden passiert nichts, damit Neuladen und
+// Direktaufrufe mit Anker unverändert funktionieren. Rendert nichts, ändert
+// also das vorgerenderte HTML nicht.
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  const letzterPfad = useRef(pathname);
+
+  useLayoutEffect(() => {
+    if (letzterPfad.current === pathname) return;
+    letzterPfad.current = pathname;
+
+    const anker = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+    if (anker) {
+      anker.scrollIntoView({ behavior: 'instant' });
+    } else {
+      // 'instant', weil html { scroll-behavior: smooth } sonst sichtbar nach oben rollt
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [pathname, hash]);
+
+  return null;
+}
+
 function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter basename={BASE_PATH || '/'}>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path={ROUTES.HOME} element={<NewHomePage />} />
