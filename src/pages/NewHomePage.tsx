@@ -22,14 +22,28 @@ const FOOTER_LEISTUNGSLINKS = [
   { label: 'Führungskräftequalifizierung', pfad: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
 ];
 
+const LEISTUNGEN_MENUE = [
+  { label: 'Alle Leistungen', pfad: ROUTES.LEISTUNGEN },
+  { label: 'KI-Strategie und Digitalisierung', pfad: ROUTES_LEISTUNGEN.KI_STRATEGIE },
+  { label: 'Change Management und Unternehmenskultur', pfad: ROUTES_LEISTUNGEN.CHANGE_MANAGEMENT },
+  { label: 'Leadership Principles und Code of Conduct', pfad: ROUTES_LEISTUNGEN.CODE_OF_CONDUCT },
+  { label: 'Kompetenzmanagement und Future Skills', pfad: ROUTES_LEISTUNGEN.KOMPETENZMANAGEMENT },
+  { label: 'Female Leadership', pfad: ROUTES_LEISTUNGEN.FEMALE_LEADERSHIP },
+  { label: 'Coaching für Führungskräfte', pfad: ROUTES_LEISTUNGEN.COACHING },
+  { label: 'Führungskräftequalifizierung', pfad: ROUTES.FUEHRUNGSKRAEFTEQUALIFIZIERUNG },
+];
+
 function NewHomePage() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [leistungenOpen, setLeistungenOpen] = useState(false);
+  const [mobileLeistungenOpen, setMobileLeistungenOpen] = useState(false);
   const [quickScanOpen, setQuickScanOpen] = useState(false);
   const [textExpanded, setTextExpanded] = useState(false);
   const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null);
   const unternehmenDropdownRef = useRef<HTMLDivElement>(null);
+  const leistungenDropdownRef = useRef<HTMLDivElement>(null);
 
   const scrollToExpandedSection = (targetId: string) => {
     const element = document.getElementById(targetId);
@@ -65,6 +79,32 @@ function NewHomePage() {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [dropdownOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        leistungenDropdownRef.current &&
+        !leistungenDropdownRef.current.contains(event.target as Node)
+      ) {
+        setLeistungenOpen(false);
+      }
+    };
+
+    if (leistungenOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [leistungenOpen]);
+
+  // Beim Schließen des Handymenüs auch das aufgeklappte "Leistungen" zurücksetzen
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      setMobileLeistungenOpen(false);
+    }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -177,7 +217,10 @@ function NewHomePage() {
                 type="button"
                 aria-expanded={dropdownOpen}
                 aria-haspopup="true"
-                onClick={() => setDropdownOpen((open) => !open)}
+                onClick={() => {
+                  setDropdownOpen((open) => !open);
+                  setLeistungenOpen(false);
+                }}
                 className="text-xs font-medium text-white/60 tracking-[0.1em] uppercase transition-colors hover:text-white flex items-center gap-1"
               >
                 Unternehmen
@@ -185,52 +228,55 @@ function NewHomePage() {
                   className={`w-3 h-3 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
                 />
               </button>
-              {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-[#101420] border border-accent/20 shadow-xl">
-                  <a
-                    href="#uvm-consulting"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
-                  >
-                    UVM Consulting Group
-                  </a>
-                  <a
-                    href="#geschaeftsfuehrung"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
-                  >
-                    Geschäftsführung
-                  </a>
-                  <a
-                    href="#werte"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
-                  >
-                    Werte und Haltung
-                  </a>
-                  <a
-                    href="#netzwerk"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
-                  >
-                    Netzwerk
-                  </a>
-                  <a
-                    href="#referenzen"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
-                  >
-                    Referenzen
-                  </a>
-                  <a
-                    href="#publikationen"
-                    onClick={() => setDropdownOpen(false)}
-                    className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors"
-                  >
-                    Publikationen
-                  </a>
-                </div>
-              )}
+              {/* Immer gerendert und per CSS ausgeblendet, damit die Links im vorgerenderten HTML stehen */}
+              <div
+                className={`absolute top-full left-0 mt-2 w-64 bg-[#101420] border border-accent/20 shadow-xl ${
+                  dropdownOpen ? '' : 'hidden'
+                }`}
+              >
+                <a
+                  href="#uvm-consulting"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
+                >
+                  UVM Consulting Group
+                </a>
+                <a
+                  href="#geschaeftsfuehrung"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
+                >
+                  Geschäftsführung
+                </a>
+                <a
+                  href="#werte"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
+                >
+                  Werte und Haltung
+                </a>
+                <a
+                  href="#netzwerk"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
+                >
+                  Netzwerk
+                </a>
+                <a
+                  href="#referenzen"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors border-b border-white/5"
+                >
+                  Referenzen
+                </a>
+                <a
+                  href="#publikationen"
+                  onClick={() => setDropdownOpen(false)}
+                  className="block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors"
+                >
+                  Publikationen
+                </a>
+              </div>
             </div>
             <a
               href="#ansatz"
@@ -238,12 +284,41 @@ function NewHomePage() {
             >
               Beratungsansatz
             </a>
-            <a
-              href="#leistungen"
-              className="text-xs font-medium text-white/60 tracking-[0.1em] uppercase transition-colors hover:text-white"
-            >
-              Leistungen
-            </a>
+            <div className="relative" ref={leistungenDropdownRef}>
+              <button
+                type="button"
+                aria-expanded={leistungenOpen}
+                aria-haspopup="true"
+                onClick={() => {
+                  setLeistungenOpen((open) => !open);
+                  setDropdownOpen(false);
+                }}
+                className="text-xs font-medium text-white/60 tracking-[0.1em] uppercase transition-colors hover:text-white flex items-center gap-1"
+              >
+                Leistungen
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform ${leistungenOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+              <div
+                className={`absolute top-full left-0 mt-2 w-64 bg-[#101420] border border-accent/20 shadow-xl ${
+                  leistungenOpen ? '' : 'hidden'
+                }`}
+              >
+                {LEISTUNGEN_MENUE.map((eintrag, index) => (
+                  <Link
+                    key={eintrag.pfad}
+                    to={eintrag.pfad}
+                    onClick={() => setLeistungenOpen(false)}
+                    className={`block px-4 py-3 text-xs text-white/70 hover:bg-accent/10 hover:text-white transition-colors ${
+                      index < LEISTUNGEN_MENUE.length - 1 ? 'border-b border-white/5' : ''
+                    }`}
+                  >
+                    {eintrag.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
             <Link
               to={ROUTES.AKTUELLES}
               className="text-xs font-semibold text-accent-light tracking-[0.1em] uppercase transition-colors hover:text-white border-b border-accent/60 pb-0.5"
@@ -271,8 +346,9 @@ function NewHomePage() {
       </nav>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-[#101420] flex items-center justify-center">
-          <div className="text-center">
+        // m-auto zentriert wie bisher; reicht die Höhe nicht (Leistungen aufgeklappt), lässt sich scrollen
+        <div className="fixed inset-0 z-40 bg-[#101420] flex overflow-y-auto">
+          <div className="m-auto text-center">
             <div className="flex flex-col gap-lg">
               <div className="flex flex-col gap-3">
                 <span className="text-sm text-accent uppercase tracking-[0.15em] font-semibold">
@@ -328,13 +404,31 @@ function NewHomePage() {
               >
                 Beratungsansatz
               </a>
-              <a
-                href="#leistungen"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-xl text-white uppercase tracking-[0.1em] font-light py-1.5"
-              >
-                Leistungen
-              </a>
+              <div className="flex flex-col gap-3">
+                <button
+                  type="button"
+                  aria-expanded={mobileLeistungenOpen}
+                  onClick={() => setMobileLeistungenOpen((open) => !open)}
+                  className="text-xl text-white uppercase tracking-[0.1em] font-light py-1.5 inline-flex items-center justify-center gap-2"
+                >
+                  Leistungen
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${mobileLeistungenOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                <div className={`flex flex-col gap-3 ${mobileLeistungenOpen ? '' : 'hidden'}`}>
+                  {LEISTUNGEN_MENUE.map((eintrag) => (
+                    <Link
+                      key={eintrag.pfad}
+                      to={eintrag.pfad}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-base text-white/70 tracking-[0.08em] font-light py-1.5"
+                    >
+                      {eintrag.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <Link
                 to={ROUTES.AKTUELLES}
                 onClick={() => setMobileMenuOpen(false)}
